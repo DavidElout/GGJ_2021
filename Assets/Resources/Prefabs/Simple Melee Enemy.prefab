@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8574358767788026787}
   - component: {fileID: 8574358767788026786}
   - component: {fileID: 8574358767788026785}
-  - component: {fileID: 8574358767788026784}
-  m_Layer: 0
+  - component: {fileID: 5141329797736706980}
+  - component: {fileID: 97897361220746699}
+  m_Layer: 8
   m_Name: Simple Melee Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -82,7 +83,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8574358767788026784
+--- !u!135 &5141329797736706980
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,8 +91,20 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8574358767788026799}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &97897361220746699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574358767788026799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef3507274abf734797dcb12021c8eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
