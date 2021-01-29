@@ -63,7 +63,9 @@ public class PlayerFireBehaviour : MonoBehaviour
             {
                 playerStatus.Sanity--;
                 Vector3 spawnTowards = hit.point - transform.position;
-                Instantiate(bulletPrefab, transform.position + spawnTowards.normalized, Quaternion.LookRotation(spawnTowards, Vector3.up));
+                Instantiate(bulletPrefab, 
+                    transform.position + spawnTowards.normalized, 
+                    Quaternion.LookRotation(new Vector3(spawnTowards.x, 0, spawnTowards.z), Vector3.up));
             }
         }
     }
