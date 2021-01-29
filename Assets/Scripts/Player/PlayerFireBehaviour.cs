@@ -6,15 +6,20 @@ using UnityEngine;
 public class PlayerFireBehaviour : MonoBehaviour
 {
     [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField] private Light playerLight;
 
     private float timer = 0, timeUntilFireEffect = 2;
     private IFlamable currentFlamableObject;
 
+    private Sequence flickerSequence;
 
     private void Awake()
     {
         playerStatus.SanityReset();
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
+
+        flickerSequence = DOTween.Sequence();
+        
     }
 
     private void OnDestroy()
@@ -24,13 +29,18 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void PlayerStatus_SanityChangedEvt(object sender, int e)
     {
-        transform.localScale = Vector3.one * e;
+        transform.localScale = Vector3.one * e / 4;
     }
 
     void Update()
     {
         HandleInput();
+        
+        if(!flickerSequence.active)
+            flickerSequence.Append(playerLight.DOIntensity(Random.Range(0f, 2f), Random.Range(.2f, 1f)));
+        playerLight.range = playerLight.intensity * 50;
     }
+
 
     private void HandleInput()
     {
