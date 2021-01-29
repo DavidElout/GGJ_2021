@@ -7,6 +7,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 {
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private Light playerLight;
+    [SerializeField] private ParticleHandler particles;
 
     [SerializeField] private GameObject bulletPrefab;
 
@@ -31,6 +32,8 @@ public class PlayerFireBehaviour : MonoBehaviour
     private void PlayerStatus_SanityChangedEvt(object sender, int e)
     {
         transform.localScale = Vector3.one * e / 4;
+
+        particles.ScaleParticles(e / 4);
     }
 
     void Update()
