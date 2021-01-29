@@ -8,6 +8,8 @@ public class PlayerFireBehaviour : MonoBehaviour
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private Light playerLight;
 
+    [SerializeField] private GameObject bulletPrefab;
+
     private float timer = 0, timeUntilFireEffect = 2;
     private IFlamable currentFlamableObject;
 
@@ -19,7 +21,6 @@ public class PlayerFireBehaviour : MonoBehaviour
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
 
         flickerSequence = DOTween.Sequence();
-        
     }
 
     private void OnDestroy()
@@ -56,12 +57,19 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void ShootFire()
     {
-        playerStatus.Sanity--;
+        if (playerStatus.Sanity > 1)
+        {
+            if (RayCasterTool.DoRaycastFromMouse(out RaycastHit hit))
+            {
+                playerStatus.Sanity--;
+                Vector3 spawnTowards = hit.point - transform.position;
+                Instantiate(bulletPrefab, transform.position + spawnTowards.normalized, Quaternion.LookRotation(spawnTowards, Vector3.up));
+            }
+        }
     }
 
     private void MeleeAttack()
     {
-
     }
 
     private void OnTriggerStay(Collider other)

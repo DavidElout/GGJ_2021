@@ -145,7 +145,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301817773028917818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
+  playerLight: {fileID: 2146907115}
+  bulletPrefab: {fileID: 3510804517800841896, guid: f2903a40ccab2574b8ae6466200f2419, type: 3}
 --- !u!1 &1301817773905475657
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,4 +32,9 @@ public class PlayerStatus : ScriptableObject
         sanity = sanityStartingValue;
         sanityLimit.y = sanityUpperLimitStartingValue;
     }
+
+    public void IncreaseSanityLimit(int amount)
+    {
+        sanityLimit.y += amount;
+    }
 }
