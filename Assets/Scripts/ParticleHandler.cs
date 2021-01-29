@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ParticleHandler : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class ParticleHandler : MonoBehaviour
     {
         for (int i = 0; i < particles.Length; i++)
         {
-            particles[i].transform.localScale = new Vector3(size, size, size);
+            particles[i].transform.DOScale(new Vector3(size, size, size), 1);
         }
     }
 }
