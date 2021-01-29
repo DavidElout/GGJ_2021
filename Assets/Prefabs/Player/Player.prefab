@@ -188,6 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
   playerLight: {fileID: 2146907115}
+  particles: {fileID: 6932332686514330350}
   bulletPrefab: {fileID: 3510804517800841896, guid: f2903a40ccab2574b8ae6466200f2419, type: 3}
 --- !u!1 &1301817773905475657
 GameObject:
@@ -603,3 +604,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8226917190686177692, guid: f44774860bebb1e44955ef3fc591a223, type: 3}
   m_PrefabInstance: {fileID: 1305892441322382195}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6932332686514330350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8226917190686177693, guid: f44774860bebb1e44955ef3fc591a223, type: 3}
+  m_PrefabInstance: {fileID: 1305892441322382195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf65391dd890547ad4f93bd48aaaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

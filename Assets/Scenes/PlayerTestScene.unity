@@ -282,6 +282,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5694238036255890244, guid: d67f59510a063474f857ada8628d0bba, type: 3}
+      propertyPath: startSanityPool
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5694238036499268803, guid: d67f59510a063474f857ada8628d0bba, type: 3}
       propertyPath: m_Name
       value: LeavesObject
