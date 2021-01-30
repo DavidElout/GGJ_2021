@@ -8,7 +8,6 @@ public class ParticleHandler : MonoBehaviour
     [SerializeField] private bool startOnPlay = false;
     [SerializeField] private ParticleSystem[] particles;
  
-
     private void Start()
     {
         if (startOnPlay)
@@ -16,7 +15,6 @@ public class ParticleHandler : MonoBehaviour
             ActivateParticles();
         }
     }
-
 
     public void ActivateParticles()
     {

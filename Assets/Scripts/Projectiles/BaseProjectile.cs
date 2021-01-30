@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour
 {
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
+    public float InitialSpeed { get; set; }
 
     protected virtual void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * (speed + InitialSpeed) * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)

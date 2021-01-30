@@ -6,10 +6,13 @@ using UnityEngine;
 public class PlayerFireBehaviour : MonoBehaviour
 {
     [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Light playerLight;
-    [SerializeField] private ParticleHandler particles;
+    [SerializeField] private ParticleHandler playerParticles;
 
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private MeleeAttack meleeAttack;
+    [SerializeField] private ProjectileAttack projectileAttack;
+
 
     private float timer = 0, timeUntilFireEffect = 2;
     private IFlamable currentFlamableObject;
@@ -31,7 +34,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void PlayerStatus_SanityChangedEvt(object sender, int e)
     {
-        particles.ScaleParticles(e / 10f + 0.4f);
+        playerParticles.ScaleParticles(e / 10f + 0.4f);
     }
 
     void Update()
@@ -50,9 +53,9 @@ public class PlayerFireBehaviour : MonoBehaviour
         {
             ShootFire();
         }
-        else if(Input.GetKeyDown(KeyCode.Mouse2))
+        else if(Input.GetKeyDown(KeyCode.Mouse1))
         {
-            MeleeAttack();
+            meleeAttack.TryAttack();
         }
     }
 
@@ -60,28 +63,18 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (playerStatus.Sanity > 1)
         {
-            if (RayCasterTool.DoRaycastFromMouse(out RaycastHit hit))
-            {
+            if(projectileAttack.TryAttack())
                 playerStatus.Sanity--;
-                Vector3 spawnTowards = hit.point - transform.position;
-                Instantiate(bulletPrefab, 
-                    transform.position + spawnTowards.normalized, 
-                    Quaternion.LookRotation(new Vector3(spawnTowards.x, 0, spawnTowards.z), Vector3.up));
-            }
         }
-    }
-
-    private void MeleeAttack()
-    {
     }
 
     private void OnTriggerStay(Collider other)
     {
-        /*if(other.CompareTag("Bullet"))
+        if(other.CompareTag("Bullet"))
         {
-            playerStatus.Sanity--;
-        }   */
-        if(other.CompareTag("FireSource"))
+            playerStatus.Sanity-= other.GetComponent<Attack>().Damage;
+        }  
+        else if (other.CompareTag("FireSource"))
         {
             timer += Time.deltaTime;
 
@@ -104,13 +97,4 @@ public class PlayerFireBehaviour : MonoBehaviour
             timer = 0;
         }
     }
-}
-
-public interface IFlamable
-{
-    int SanityPool { get; set; } // Amount of sanity increase before burning out
-    bool OnFire { get; set; }
-    bool BurnedOut { get; set; }
-    void Ignite();
-    void Extinguish();
 }
