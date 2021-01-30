@@ -24,13 +24,14 @@ public class BaseProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("AAAAAAAAAAAAAAAAA" + collision.gameObject.name);
         StartCoroutine(BurnedOut());
     }
 
     protected IEnumerator BurnedOut()
     {
         HitSomething = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
 
         Destroy(gameObject);
     }

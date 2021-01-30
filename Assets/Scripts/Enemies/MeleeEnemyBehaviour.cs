@@ -5,32 +5,34 @@ using UnityEngine;
 public class MeleeEnemyBehaviour : EnemyBehaviour
 {
     [SerializeField] private MeleeAttack attack;
+    [SerializeField] public int enemyHealth = 3;
 
-    public override void ChasingState()
+    public override void ChasingState(GameObject targetObject)
     {
-        base.ChasingState();
-        Vector3 playerPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
-        Vector3 positionDifference = playerPosition - this.transform.position;
-        float differenceDistance = positionDifference.magnitude;
+        base.ChasingState(targetObject);
+        Vector3 targetPosition = new Vector3(targetObject.transform.position.x, this.transform.position.y, targetObject.transform.position.z);
+        Vector3 positionDifference = targetPosition - this.transform.position;
         Vector3 differenceDirection = positionDifference.normalized;
+        float differenceDistance = positionDifference.magnitude;
 
         int radiusForMaxForce = 15;
         int maxForce = 75;
 
         if (differenceDistance > radiusForMaxForce) {
-            positionDifference = Vector3.ClampMagnitude(playerPosition - this.transform.position, radiusForMaxForce);
+            positionDifference = Vector3.ClampMagnitude(targetPosition - this.transform.position, radiusForMaxForce);
         }
 
         float forceRatio = differenceDistance / radiusForMaxForce;
         float thrust = forceRatio * maxForce;
         Vector3 forceVector = differenceDirection * thrust;
 
-        rb.AddForce(forceVector);
+        enemyRigidbody.AddForce(forceVector);
     }
 
-    public override void AttackingState(Vector3 targetPosition)
+    public override void AttackingState(GameObject targetObject)
     {
-        base.AttackingState(targetPosition);
+        base.AttackingState(targetObject);
+        attack.targetObject = targetObject;
         attack.TryAttack();
     }
 }

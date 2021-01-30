@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemyBehaviour : EnemyBehaviour
+public class MageEnemyBehaviour : EnemyBehaviour
 {
-    [SerializeField] private ProjectileAttack attack;
-    [SerializeField] public int enemyHealth = 2;
+    [SerializeField] private MeleeAttack attack;
+    [SerializeField] public int enemyHealth { get; set; }
 
     public override void ChasingState(GameObject targetObject)
     {
