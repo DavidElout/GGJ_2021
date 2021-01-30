@@ -68,13 +68,18 @@ public class PlayerFireBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet")) {
+            playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+        }
+    }
+
+
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Bullet"))
-        {
-            playerStatus.Sanity-= other.GetComponent<Attack>().Damage;
-        }  
-        else if (other.CompareTag("FireSource"))
+
+        if (other.CompareTag("FireSource"))
         {
             timer += Time.deltaTime;
 
