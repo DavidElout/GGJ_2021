@@ -24,6 +24,17 @@ public class ParticleHandler : MonoBehaviour
         }
     }
 
+    public bool IsParticleDone()
+    {
+        for (int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i].IsAlive())
+                return false;
+        }
+        return true;
+    }
+
+
     public void ScaleParticles(float size)
     {
         for (int i = 0; i < particles.Length; i++)

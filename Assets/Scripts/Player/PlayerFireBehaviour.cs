@@ -58,8 +58,11 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         HandleInput();
 
-        if (!flickerSequence.active)
-            flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
+        if (flickerSequence != null)
+        {
+            if (!flickerSequence.active)
+                flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
+        }
         playerLight.range = playerLight.intensity * lightIntensityRangeEffect;
 
         ShowHealth();
