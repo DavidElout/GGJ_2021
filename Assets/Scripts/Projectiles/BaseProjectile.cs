@@ -6,19 +6,29 @@ public class BaseProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     public float InitialSpeed { get; set; }
+    public bool HitSomething { get; set; }
 
     protected virtual void Update()
     {
-        transform.position += transform.forward * (speed + InitialSpeed) * Time.deltaTime;
+        if(!HitSomething)
+            transform.position += transform.forward * (speed + InitialSpeed) * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        StartCoroutine(BurnedOut());
     }
 
     private void OnTriggerEnter(Collider collider)
     {
+        StartCoroutine(BurnedOut());
+    }
+
+    protected IEnumerator BurnedOut()
+    {
+        HitSomething = true;
+        yield return new WaitForSeconds(1);
+
         Destroy(gameObject);
     }
 }
