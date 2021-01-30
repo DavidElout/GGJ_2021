@@ -64,7 +64,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void ShowHealth()
     {
-        if (playerStatus.Sanity <= 1)
+        if (playerStatus.Sanity <= 2)
         {
             if (lowHealthSequence == null)
             {
@@ -79,6 +79,13 @@ public class PlayerFireBehaviour : MonoBehaviour
             neonWallMat.color = new Color(1 - playerStatus.SanityPercentage, playerStatus.SanityPercentage, 0);
             lowHealthSequence = null;
         }
+        if (playerStatus.Sanity <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        Debug.LogError("YOU DED");
     }
 
     private void HandleInput()
