@@ -7,13 +7,19 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     public bool OnFire { get; set; }
     public int SanityPool { get; set; }
     public bool BurnedOut { get; set; }
+    public int TimeToBurnPerSanity { get => timeToBurnPerSanity; set => timeToBurnPerSanity = value; }
 
     [SerializeField] private bool burnEffectConstant;
+    [SerializeField] private int timeToBurnPerSanity;
     [SerializeField] private int startSanityPool;
 
     private void OnEnable()
     {
         SanityPool = startSanityPool;
+        if(burnEffectConstant)
+        {
+            // Start fire
+        }
     }
 
     private void BurnFromPool()
@@ -52,6 +58,7 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
         print("Object burned out");
         // Burn out the object
         // Let the particle effect burn out
+        BurnedOut = true;
         Destroy(gameObject);
     }
 }

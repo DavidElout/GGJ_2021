@@ -27,7 +27,7 @@ public class PlayerFireBehaviour : MonoBehaviour
     [Header("Sanity effects")]
     [SerializeField] Material neonWallMat;
 
-    private float timer = 0, timeUntilFireEffect = 2;
+    private float burnTimer = 0;
     private IFlamable currentFlamableObject;
 
     private Sequence flickerSequence;
@@ -131,15 +131,17 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (other.CompareTag("FireSource"))
         {
-            timer += Time.deltaTime;
-
-            if(timer > timeUntilFireEffect)
-            {
+            if(currentFlamableObject == null || currentFlamableObject.BurnedOut)
                 currentFlamableObject = other.GetComponent<IFlamable>();
-                timer = 0;
+
+            if (burnTimer > currentFlamableObject.TimeToBurnPerSanity)
+            {
+                burnTimer = 0;
                 currentFlamableObject.Ignite();
                 playerStatus.Sanity++;
             }
+
+            burnTimer += Time.deltaTime;
         }
     }
 
@@ -147,9 +149,10 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (other.CompareTag("FireSource"))
         {
+            currentFlamableObject = null;
             IFlamable flamableObject = other.GetComponent<IFlamable>();
             flamableObject.Extinguish();
-            timer = 0;
+            burnTimer = 0;
         }
     }
 }
