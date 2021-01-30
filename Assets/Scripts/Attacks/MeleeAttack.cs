@@ -2,15 +2,15 @@
 
 public class MeleeAttack : Attack
 {
-    [SerializeField] private PlayerStatus playerStatus;
-    [SerializeField] private ParticleHandler attackParticle;
+    [SerializeField] private PlayerStatus playerStatus = null;
+    [SerializeField] private ParticleSystem particleOnHit;
 
     public override void DoAttack()
     {
         base.DoAttack();
-        attackParticle.ActivateParticles();
 
         if (playerStatus != null) {
+            particleOnHit.Emit(10);
             playerStatus.Sanity -= this.Damage;
         }
     }
