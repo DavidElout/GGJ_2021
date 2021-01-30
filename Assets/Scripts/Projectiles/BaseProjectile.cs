@@ -19,11 +19,6 @@ public class BaseProjectile : MonoBehaviour
         StartCoroutine(BurnedOut());
     }
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        StartCoroutine(BurnedOut());
-    }
-
     protected IEnumerator BurnedOut()
     {
         HitSomething = true;
