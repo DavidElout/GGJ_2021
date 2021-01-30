@@ -257,7 +257,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2610887525197119947}
-  - component: {fileID: 2019979132641568930}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -281,21 +280,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2019979132641568930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2610887525197119940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b6787a5b18e1a4caa594b68e177c5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToEscapeSec: 180
-  playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
-  damageOverTime: 10
 --- !u!1001 &2610887523064863335
 PrefabInstance:
   m_ObjectHideFlags: 0

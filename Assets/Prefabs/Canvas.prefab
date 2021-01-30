@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 129761268665967949}
   - component: {fileID: 129761268665967946}
   - component: {fileID: 129761268665967947}
-  - component: {fileID: 129761268665967951}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -104,21 +103,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &129761268665967951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129761268665967944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b6787a5b18e1a4caa594b68e177c5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToEscapeSec: 2
-  playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
-  damageOverTime: 10
 --- !u!114 &7668603992480371322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4012c5893c3ffc646a4d52f252a5a6a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 2518583636280581303}
 --- !u!1 &3525625769838503459
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,13 +127,14 @@ GameObject:
   - component: {fileID: 3525625769838503486}
   - component: {fileID: 3525625769838503485}
   - component: {fileID: 3525625769838503487}
+  - component: {fileID: 1218344866}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3525625769838503484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -279,8 +263,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e743237e139f4714f96dd342bc1c021d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTrial: {fileID: 129761268665967951}
+  timeTrial: {fileID: 1218344866}
   timerText: {fileID: 3525625769838503485}
+--- !u!114 &1218344866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3525625769838503459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b6787a5b18e1a4caa594b68e177c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEscapeSec: 180
+  playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
+  damageOverTime: 10
 --- !u!1001 &129761268159613787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,7 +550,7 @@ PrefabInstance:
     - target: {fileID: 6631238653905673394, guid: 825ccd3a737fb5e4183679fa8d8ecd52, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7668603992480371322}
     - target: {fileID: 6631238653905673395, guid: 825ccd3a737fb5e4183679fa8d8ecd52, type: 3}
       propertyPath: m_SizeDelta.x
       value: 500
@@ -639,7 +638,7 @@ PrefabInstance:
     - target: {fileID: 6631238655902089316, guid: 825ccd3a737fb5e4183679fa8d8ecd52, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7668603992480371322}
     - target: {fileID: 6631238655902089317, guid: 825ccd3a737fb5e4183679fa8d8ecd52, type: 3}
       propertyPath: m_SizeDelta.x
       value: 500
