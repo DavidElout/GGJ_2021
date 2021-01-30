@@ -18,7 +18,7 @@ public class SpawnEnemy : MonoBehaviour
     Vector3 GetValidRandomLocation(int count = 0)
     {
         count++;
-        Vector3 randomCoordinates = new Vector3((Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.x, 0.5f, (Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.z);
+        Vector3 randomCoordinates = new Vector3((Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.x, 1f, (Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.z);
         bool coordinatesValid = true;
 
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, spawnRadius);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShamanEnemyBehaviour : EnemyBehaviour
+public class MageEnemyBehaviour : EnemyBehaviour
 {
     [SerializeField] private MeleeAttack attack;
     [SerializeField] public int enemyHealth { get; set; }
