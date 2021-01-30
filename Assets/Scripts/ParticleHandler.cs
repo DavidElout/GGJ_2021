@@ -26,6 +26,8 @@ public class ParticleHandler : MonoBehaviour
         }
     }
 
+
+
     public void ScaleParticles(float size)
     {
         for (int i = 0; i < particles.Length; i++)
