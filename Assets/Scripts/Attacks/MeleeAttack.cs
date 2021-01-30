@@ -9,7 +9,9 @@ public class MeleeAttack : Attack
     {
         base.DoAttack();
         attackParticle.ActivateParticles();
-        Debug.Log(playerStatus.Sanity);
-        playerStatus.Sanity -= this.Damage;
+
+        if (playerStatus != null) {
+            playerStatus.Sanity -= this.Damage;
+        }
     }
 }

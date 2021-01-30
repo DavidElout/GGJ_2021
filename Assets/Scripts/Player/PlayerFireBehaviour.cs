@@ -58,8 +58,11 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         HandleInput();
 
-        if (!flickerSequence.active)
-            flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
+        if (flickerSequence != null)
+        {
+            if (!flickerSequence.active)
+                flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
+        }
         playerLight.range = playerLight.intensity * lightIntensityRangeEffect;
 
         ShowHealth();
@@ -67,7 +70,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void ShowHealth()
     {
-        if (playerStatus.Sanity <= 1)
+        if (playerStatus.Sanity <= 2)
         {
             if (lowHealthSequence == null)
             {
@@ -80,8 +83,16 @@ public class PlayerFireBehaviour : MonoBehaviour
         else
         {
             neonWallMat.color = new Color(1 - playerStatus.SanityPercentage, playerStatus.SanityPercentage, 0);
+            lowHealthSequence.Kill();
             lowHealthSequence = null;
         }
+        if (playerStatus.Sanity <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        Debug.LogError("YOU DED");
     }
 
     private void HandleInput()
@@ -105,13 +116,17 @@ public class PlayerFireBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Bullet"))
-        {
-            playerStatus.Sanity -= other.GetComponent<Attack>().Damage;
-        }  
-        else if (other.CompareTag("FireSource"))
+        if (other.CompareTag("FireSource"))
         {
             timer += Time.deltaTime;
 

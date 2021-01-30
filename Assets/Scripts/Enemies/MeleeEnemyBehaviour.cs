@@ -2,25 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemyBehaviour : MonoBehaviour
+public class MeleeEnemyBehaviour : EnemyBehaviour
 {
-    enum State { Idle, Chasing, Attacking, Dying };
-    State currentState;
+    [SerializeField] private MeleeAttack attack;
 
-    [SerializeField] private MeleeAttack meleeAttack;
-    [SerializeField]  private bool playerDetected = false;
-    [SerializeField]  private bool playerInAttackRange = false;
-
-    Rigidbody rb;
-    GameObject player;
-
-    IEnumerator IdleState()
+    public override void ChasingState()
     {
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    void ChasingState()
-    {
+        base.ChasingState();
         Vector3 playerPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
         Vector3 positionDifference = playerPosition - this.transform.position;
         float differenceDistance = positionDifference.magnitude;
@@ -40,72 +28,9 @@ public class MeleeEnemyBehaviour : MonoBehaviour
         rb.AddForce(forceVector);
     }
 
-    void AttackingState()
+    public override void AttackingState(Vector3 targetPosition)
     {
-        meleeAttack.TryAttack();
-    }
-
-    void DyingState()
-    {
-        Object.Destroy(this.gameObject);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player") {
-            if (!playerDetected) {
-                player = other.gameObject;
-                playerDetected = true;
-            } else {
-                playerInAttackRange = true;
-            }
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player") {
-            if (playerInAttackRange) {
-                playerInAttackRange = false;
-            } else {
-                playerDetected = false;
-            }
-        }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        currentState = State.Idle;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (playerDetected) {
-            if (playerInAttackRange) {
-                currentState = State.Attacking;
-            } else {
-                currentState = State.Chasing;
-            }
-        } else {
-            currentState = State.Idle;
-        }
-
-        switch (currentState) {
-            case State.Idle:
-                StartCoroutine(IdleState());
-                break;
-            case State.Chasing:
-                ChasingState();
-                break;
-            case State.Attacking:
-                AttackingState();
-                break;
-            case State.Dying:
-                DyingState();
-                break;
-        }
+        base.AttackingState(targetPosition);
+        attack.TryAttack();
     }
 }
