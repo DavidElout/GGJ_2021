@@ -32,6 +32,9 @@ public class PlayerFireBehaviour : MonoBehaviour
     private Sequence flickerSequence;
     private Sequence lowHealthSequence;
 
+    public MeleeAttack MeleeAttack => meleeAttack;
+    public ProjectileAttack ProjectileAttack => projectileAttack;
+
     private void Start()
     {
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
