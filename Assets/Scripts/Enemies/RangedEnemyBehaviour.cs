@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemyBehaviour : EnemyBehaviour
+public class RangedEnemyBehaviour : EnemyBehaviour
 {
-    [SerializeField] private MeleeAttack attack;
+    [SerializeField] private ProjectileAttack attack;
 
     public override void ChasingState()
     {
@@ -31,6 +31,7 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
     public override void AttackingState(Vector3 targetPosition)
     {
         base.AttackingState(targetPosition);
+        attack.targetPosition = targetPosition;
         attack.TryAttack();
     }
 }

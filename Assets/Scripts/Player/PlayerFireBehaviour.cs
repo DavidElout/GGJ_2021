@@ -113,7 +113,7 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if(other.CompareTag("Bullet"))
         {
-            playerStatus.Sanity -= other.GetComponent<Attack>().Damage;
+            playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
         }  
         else if (other.CompareTag("FireSource"))
         {
