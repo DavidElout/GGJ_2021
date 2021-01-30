@@ -77,6 +77,7 @@ public class PlayerFireBehaviour : MonoBehaviour
         else
         {
             neonWallMat.color = new Color(1 - playerStatus.SanityPercentage, playerStatus.SanityPercentage, 0);
+            lowHealthSequence.Kill();
             lowHealthSequence = null;
         }
         if (playerStatus.Sanity <= 0)
@@ -109,13 +110,17 @@ public class PlayerFireBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet"))
         {
             playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
-        }  
-        else if (other.CompareTag("FireSource"))
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("FireSource"))
         {
             timer += Time.deltaTime;
 
