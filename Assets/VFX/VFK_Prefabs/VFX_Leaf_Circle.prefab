@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5179466375644307021}
   - component: {fileID: 2065217009542119458}
   m_Layer: 0
-  m_Name: VFX_Enemy
+  m_Name: VFX_Leaf_Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1020,7 +1020,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 1
+      time: 0
       countCurve:
         serializedVersion: 2
         minMaxState: 0
