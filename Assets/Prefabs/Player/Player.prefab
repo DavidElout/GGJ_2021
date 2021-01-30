@@ -634,6 +634,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1301817773028917817}
     m_Modifications:
+    - target: {fileID: 1706628348, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1164148469664919088, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -681,6 +685,22 @@ PrefabInstance:
     - target: {fileID: 1164148469664919089, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
       propertyPath: m_Name
       value: ShockWave_Parent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164148469917738377, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164148470918781231, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164148471068168407, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164148471467602092, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e88d4b54cd482754589f5b5822cde6a8, type: 3}
