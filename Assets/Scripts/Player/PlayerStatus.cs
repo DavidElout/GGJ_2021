@@ -26,6 +26,7 @@ public class PlayerStatus : ScriptableObject
         } 
     }
     public Vector2Int SanityLimit { get => sanityLimit; set => sanityLimit = value; }
+    public float SanityPercentage { get => (sanity / (float)sanityLimit.y); }
     
     public void SanityReset()
     {
