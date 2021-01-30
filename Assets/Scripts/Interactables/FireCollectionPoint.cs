@@ -13,6 +13,7 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     [SerializeField] private int timeToBurnPerSanity;
     [SerializeField] private int startSanityPool;
     [SerializeField] private ParticleHandler particles;
+
     private Collider collider;
     private MeshRenderer renderer;
 

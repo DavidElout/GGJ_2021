@@ -3921,30 +3921,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 646548195, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164148469827176240, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164148469945175752, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164148470342446771, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164148470712377672, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164148470944267158, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7760521038749857216, guid: 0cf76be43fd5d224bb50f428a76a8be3, type: 3}
       propertyPath: m_RootOrder
       value: 3
