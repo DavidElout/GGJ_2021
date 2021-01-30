@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3[] directions = { new Vector3(1, 0, 0), new Vector3(0, 0, 1) };
 
+    public Vector3 Velocity => rb.velocity;
+
     void Update()
     {
         HandleInput();

@@ -34,10 +34,16 @@ public class PlayerStatus : ScriptableObject
             SanityLimitChangedEvt?.Invoke(this, sanityLimit.y);
         }
     }
+    public float SanityPercentage { get => (sanity / (float)sanityLimit.y); }
     
     public void SanityReset()
     {
-        sanity = sanityStartingValue;
-        sanityLimit.y = sanityUpperLimitStartingValue;
+        SanityLimit = new Vector2Int(sanityLimit.x, sanityUpperLimitStartingValue);
+        Sanity = sanityStartingValue;
+    }
+
+    public void IncreaseSanityLimit(int amount)
+    {
+        SanityLimit = new Vector2Int(sanityLimit.x, sanityLimit.y += amount);
     }
 }

@@ -8,7 +8,7 @@ public class SanityBar : MonoBehaviour
     public PlayerStatus playerStatus;
     public Slider slider;
 
-    private void Start()
+    private void Awake()
     {
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
         playerStatus.SanityLimitChangedEvt += PlayerStatus_SanityLimitChangedEvt;

@@ -6,20 +6,38 @@ using UnityEngine;
 public class PlayerFireBehaviour : MonoBehaviour
 {
     [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Light playerLight;
+    [SerializeField] private ParticleHandler playerParticles;
+
+    [SerializeField] private MeleeAttack meleeAttack;
+    [SerializeField] private ProjectileAttack projectileAttack;
+
+    [Header("Sanity behaviour")]
+    [SerializeField] private int lightIntensityRangeEffect = 20;
+    [SerializeField] private float lightIntensityAffect = 0.2f;
+    [SerializeField] private float lightIntensityBaseValue = 0.5f;
+
+    [SerializeField] private float flameScaleAffect = 0.1f;
+    [SerializeField] private float flameScaleBaseValue = 0.5f;
+
+    [SerializeField] private float currentLightIntensity;
+
+    [Header("Sanity effects")]
+    [SerializeField] Material neonWallMat;
 
     private float timer = 0, timeUntilFireEffect = 2;
     private IFlamable currentFlamableObject;
 
     private Sequence flickerSequence;
+    private Sequence lowHealthSequence;
 
-    private void Awake()
+    private void Start()
     {
-        playerStatus.SanityReset();
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
+        playerStatus.SanityReset();
 
         flickerSequence = DOTween.Sequence();
-        
     }
 
     private void OnDestroy()
@@ -29,18 +47,39 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void PlayerStatus_SanityChangedEvt(object sender, int e)
     {
-        transform.localScale = Vector3.one * e / 4;
+        playerParticles.ScaleParticles(e * flameScaleAffect + flameScaleBaseValue);
+        currentLightIntensity = e * lightIntensityAffect + lightIntensityBaseValue;
     }
 
     void Update()
     {
         HandleInput();
-        
-        if(!flickerSequence.active)
-            flickerSequence.Append(playerLight.DOIntensity(Random.Range(0f, 2f), Random.Range(.2f, 1f)));
-        playerLight.range = playerLight.intensity * 50;
+
+        if (!flickerSequence.active)
+            flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
+        playerLight.range = playerLight.intensity * lightIntensityRangeEffect;
+
+        ShowHealth();
     }
 
+    private void ShowHealth()
+    {
+        if (playerStatus.Sanity <= 1)
+        {
+            if (lowHealthSequence == null)
+            {
+                lowHealthSequence = DOTween.Sequence();
+                lowHealthSequence.SetLoops(-1);
+                lowHealthSequence.Append(neonWallMat.DOColor(new Color(1, 0, 0), .6f));
+                lowHealthSequence.Append(neonWallMat.DOColor(new Color(.5f, 0, 0), .6f));
+            }
+        }
+        else
+        {
+            neonWallMat.color = new Color(1 - playerStatus.SanityPercentage, playerStatus.SanityPercentage, 0);
+            lowHealthSequence = null;
+        }
+    }
 
     private void HandleInput()
     {
@@ -48,29 +87,28 @@ public class PlayerFireBehaviour : MonoBehaviour
         {
             ShootFire();
         }
-        else if(Input.GetKeyDown(KeyCode.Mouse2))
+        else if(Input.GetKeyDown(KeyCode.Mouse1))
         {
-            MeleeAttack();
+            meleeAttack.TryAttack();
         }
     }
 
     private void ShootFire()
     {
-        playerStatus.Sanity--;
-    }
-
-    private void MeleeAttack()
-    {
-
+        if (playerStatus.Sanity > 1)
+        {
+            if(projectileAttack.TryAttack())
+                playerStatus.Sanity--;
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        /*if(other.CompareTag("Bullet"))
+        if(other.CompareTag("Bullet"))
         {
-            playerStatus.Sanity--;
-        }   */
-        if(other.CompareTag("FireSource"))
+            playerStatus.Sanity -= other.GetComponent<Attack>().Damage;
+        }  
+        else if (other.CompareTag("FireSource"))
         {
             timer += Time.deltaTime;
 
@@ -93,13 +131,4 @@ public class PlayerFireBehaviour : MonoBehaviour
             timer = 0;
         }
     }
-}
-
-public interface IFlamable
-{
-    int SanityPool { get; set; } // Amount of sanity increase before burning out
-    bool OnFire { get; set; }
-    bool BurnedOut { get; set; }
-    void Ignite();
-    void Extinguish();
 }
