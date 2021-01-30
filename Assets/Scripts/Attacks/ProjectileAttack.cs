@@ -17,6 +17,14 @@ public class ProjectileAttack : Attack
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        if (RayCasterTool.DoRaycastFromMouse(out RaycastHit hit))
+        {
+            Gizmos.DrawSphere(hit.point, 0.3f);
+        }
+    }
+
     private void SpawnProjectile(Vector3 direction, Vector3 ownerVelocity)
     {
         // Spawn the bullet
