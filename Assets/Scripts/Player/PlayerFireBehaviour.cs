@@ -18,8 +18,8 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        playerStatus.SanityReset();
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
+        playerStatus.SanityReset();
 
         flickerSequence = DOTween.Sequence();
     }
@@ -31,7 +31,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void PlayerStatus_SanityChangedEvt(object sender, int e)
     {
-        particles.ScaleParticles(e / 4f);
+        particles.ScaleParticles(e / 10f + 0.4f);
     }
 
     void Update()
