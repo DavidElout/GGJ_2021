@@ -8,6 +8,8 @@ public class MeleeEnemyBehaviour : MonoBehaviour
     State currentState;
     public bool playerDetected = false;
     public bool touchingPlayer = false;
+    bool movingEnabled = true;
+    Rigidbody rb;
     GameObject player;
 
     IEnumerator IdleState()
@@ -17,26 +19,28 @@ public class MeleeEnemyBehaviour : MonoBehaviour
 
     void ChasingState()
     {
-        float step = 6 * Time.deltaTime;
-        this.transform.position = Vector3.MoveTowards(this.transform.position, player.transform.position, step);
+        Vector3 playerPosition = new Vector3(player.transform.position.x, this.transform.position.y, player.transform.position.z);
+        Vector3 positionDifference = playerPosition - this.transform.position;
+        float differenceDistance = positionDifference.magnitude;
+        Vector3 differenceDirection = positionDifference.normalized;
+
+        int radiusForMaxForce = 50;
+        int maxForce = 50;
+
+        if (differenceDistance > radiusForMaxForce) {
+            positionDifference = Vector3.ClampMagnitude(playerPosition - this.transform.position, radiusForMaxForce);
+        }
+
+        float forceRatio = differenceDistance / radiusForMaxForce;
+        float thrust = forceRatio * maxForce;
+        Vector3 forceVector = differenceDirection * thrust;
+
+        rb.AddForce(forceVector);
     }
 
     void AttackingState()
     {
-        /* while (true) {
-             bool touchingPlayer = false;
-             Collider[] colliders = Physics.OverlapSphere(this.transform.position, 1);
-             foreach (Collider collider in colliders) {
-                 if (collider.gameObject.tag == "Player") {
-                      touchingPlayer = true;
-                 }
-             }
-
-             if (!touchingPlayer) {
-                 SetState(playerDetected ? State.Chasing : State.Idle);
-                 break;
-             }
-         }*/
+        // Attack player.
     }
 
     void DyingState()
@@ -59,15 +63,25 @@ public class MeleeEnemyBehaviour : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        movingEnabled = false;
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        movingEnabled = true;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         currentState = State.Idle;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (playerDetected) {
             if (touchingPlayer) {
