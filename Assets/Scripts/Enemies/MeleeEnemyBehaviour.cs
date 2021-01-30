@@ -6,9 +6,11 @@ public class MeleeEnemyBehaviour : MonoBehaviour
 {
     enum State { Idle, Chasing, Attacking, Dying };
     State currentState;
-    public bool playerDetected = false;
-    public bool touchingPlayer = false;
-    bool movingEnabled = true;
+
+    [SerializeField] private MeleeAttack meleeAttack;
+    [SerializeField]  private bool playerDetected = false;
+    [SerializeField]  private bool playerInAttackRange = false;
+
     Rigidbody rb;
     GameObject player;
 
@@ -24,8 +26,8 @@ public class MeleeEnemyBehaviour : MonoBehaviour
         float differenceDistance = positionDifference.magnitude;
         Vector3 differenceDirection = positionDifference.normalized;
 
-        int radiusForMaxForce = 50;
-        int maxForce = 50;
+        int radiusForMaxForce = 15;
+        int maxForce = 75;
 
         if (differenceDistance > radiusForMaxForce) {
             positionDifference = Vector3.ClampMagnitude(playerPosition - this.transform.position, radiusForMaxForce);
@@ -40,7 +42,7 @@ public class MeleeEnemyBehaviour : MonoBehaviour
 
     void AttackingState()
     {
-        // Attack player.
+        meleeAttack.TryAttack();
     }
 
     void DyingState()
@@ -51,26 +53,24 @@ public class MeleeEnemyBehaviour : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") {
-            player = other.gameObject;
-            playerDetected = true;
+            if (!playerDetected) {
+                player = other.gameObject;
+                playerDetected = true;
+            } else {
+                playerInAttackRange = true;
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player") {
-            playerDetected = false;
+            if (playerInAttackRange) {
+                playerInAttackRange = false;
+            } else {
+                playerDetected = false;
+            }
         }
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        movingEnabled = false;
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        movingEnabled = true;
     }
 
     // Start is called before the first frame update
@@ -84,7 +84,7 @@ public class MeleeEnemyBehaviour : MonoBehaviour
     void FixedUpdate()
     {
         if (playerDetected) {
-            if (touchingPlayer) {
+            if (playerInAttackRange) {
                 currentState = State.Attacking;
             } else {
                 currentState = State.Chasing;
