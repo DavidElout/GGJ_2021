@@ -23,12 +23,19 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     [SerializeField] private float currentLightIntensity;
 
+    [Header("Sanity effects")]
+    [SerializeField] Material neonWallMat;
+
     private float timer = 0, timeUntilFireEffect = 2;
     private IFlamable currentFlamableObject;
 
     private Sequence flickerSequence;
+    private Sequence lowHealthSequence;
 
-    private void Awake()
+    public MeleeAttack MeleeAttack => meleeAttack;
+    public ProjectileAttack ProjectileAttack => projectileAttack;
+
+    private void Start()
     {
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
         playerStatus.SanityReset();
@@ -50,12 +57,40 @@ public class PlayerFireBehaviour : MonoBehaviour
     void Update()
     {
         HandleInput();
-        
-        if(!flickerSequence.active)
+
+        if (!flickerSequence.active)
             flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
         playerLight.range = playerLight.intensity * lightIntensityRangeEffect;
+
+        ShowHealth();
     }
 
+    private void ShowHealth()
+    {
+        if (playerStatus.Sanity <= 2)
+        {
+            if (lowHealthSequence == null)
+            {
+                lowHealthSequence = DOTween.Sequence();
+                lowHealthSequence.SetLoops(-1);
+                lowHealthSequence.Append(neonWallMat.DOColor(new Color(1, 0, 0), .6f));
+                lowHealthSequence.Append(neonWallMat.DOColor(new Color(.5f, 0, 0), .6f));
+            }
+        }
+        else
+        {
+            neonWallMat.color = new Color(1 - playerStatus.SanityPercentage, playerStatus.SanityPercentage, 0);
+            lowHealthSequence.Kill();
+            lowHealthSequence = null;
+        }
+        if (playerStatus.Sanity <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        Debug.LogError("YOU DED");
+    }
 
     private void HandleInput()
     {
@@ -78,13 +113,17 @@ public class PlayerFireBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+        }
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Bullet"))
-        {
-            playerStatus.Sanity-= other.GetComponent<Attack>().Damage;
-        }  
-        else if (other.CompareTag("FireSource"))
+        if (other.CompareTag("FireSource"))
         {
             timer += Time.deltaTime;
 

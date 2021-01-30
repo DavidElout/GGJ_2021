@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 7392304194920394215}
   m_Layer: 6
   m_Name: PlayerModel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8827657314757052637
 MonoBehaviour:
@@ -201,6 +201,7 @@ MonoBehaviour:
   flameScaleAffect: 0.1
   flameScaleBaseValue: 0.5
   currentLightIntensity: 0
+  neonWallMat: {fileID: 2100000, guid: 6f4cb4179cd2a574694e35bd82b2e2ed, type: 2}
 --- !u!114 &3849398901006884910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 2
   damage: 1
+  playerStatus: {fileID: 0}
   attackParticle: {fileID: 1164148470785880108}
 --- !u!114 &7392304194920394215
 MonoBehaviour:
@@ -232,6 +234,7 @@ MonoBehaviour:
   damage: 5
   prefab: {fileID: 3510804517800841896, guid: f2903a40ccab2574b8ae6466200f2419, type: 3}
   owner: {fileID: 6716620867839371322}
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1301817773905475657
 GameObject:
   m_ObjectHideFlags: 0

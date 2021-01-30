@@ -18,7 +18,7 @@ public class SpawnEnemy : MonoBehaviour
     Vector3 GetValidRandomLocation(int count = 0)
     {
         count++;
-        Vector3 randomCoordinates = new Vector3((Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.x, 0, (Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.z);
+        Vector3 randomCoordinates = new Vector3((Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.x, 0.5f, (Random.Range(0, spawnRadius) - spawnRadius / 2) + this.transform.position.z);
         bool coordinatesValid = true;
 
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, spawnRadius);
@@ -48,10 +48,10 @@ public class SpawnEnemy : MonoBehaviour
                 enemyObject = Resources.Load<GameObject>("Prefabs/Simple Melee Enemy");
                 break;
             case EnemyType.Tank:
-                enemyObject = Resources.Load<GameObject>("Prefabs/Simple Melee Enemy");
+                enemyObject = Resources.Load<GameObject>("Prefabs/Ranged Enemy");
                 break;
             case EnemyType.Ranged:
-                enemyObject = Resources.Load<GameObject>("Prefabs/Simple Melee Enemy");
+                enemyObject = Resources.Load<GameObject>("Prefabs/Ranged Enemy");
                 break;
             case EnemyType.Mage:
                 enemyObject = Resources.Load<GameObject>("Prefabs/Simple Melee Enemy");
