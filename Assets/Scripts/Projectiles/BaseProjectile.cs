@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseProjectile : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public int Damage { get; set; }
     public float InitialSpeed { get; set; }
     public bool HitSomething { get; set; }
 
@@ -14,12 +15,14 @@ public class BaseProjectile : MonoBehaviour
             transform.position += transform.forward * (speed + InitialSpeed) * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(BurnedOut());
+        if (other.gameObject.tag == "Player") {
+            StartCoroutine(BurnedOut());
+        }
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(BurnedOut());
     }

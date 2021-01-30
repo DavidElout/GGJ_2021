@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3510804517800841902}
-  - component: {fileID: 3510804517800841903}
+  - component: {fileID: 8065655148861510292}
   - component: {fileID: 8973878988581713359}
-  m_Layer: 7
-  m_Name: PlayerFireBullet
+  - component: {fileID: 7882393681792846358}
+  m_Layer: 9
+  m_Name: EnemyLeafProjectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3510804517800841903
+--- !u!114 &8065655148861510292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3510804517800841896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5038243c1e753f0418908b2e5bd2e5ed, type: 3}
+  m_Script: {fileID: 11500000, guid: da13473d6a4d84647859d7278c302c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
@@ -64,7 +65,20 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
+--- !u!135 &7882393681792846358
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510804517800841896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3510804518852721847
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,8 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3510804518852721850}
-  - component: {fileID: 4966233631507635287}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Model
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -96,19 +109,6 @@ Transform:
   m_Father: {fileID: 3510804517800841902}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &4966233631507635287
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3510804518852721847}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.99999994
-  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
 --- !u!1001 &3559025047290766855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7519869950447931610, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950447931613, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -130,7 +130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950808431186, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950808431189, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950822509732, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950822509735, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -158,7 +158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950940135894, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7519869950940135897, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_RootOrder
@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7519869951246473738, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7519869951246473741, guid: 3b265d18bda5feb4e8cb7a1b81c3f0c7, type: 3}
       propertyPath: m_LocalPosition.x
