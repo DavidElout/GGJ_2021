@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerStatus : ScriptableObject
 {
     public event EventHandler<int> SanityChangedEvt;
+    public event EventHandler<int> SanityLimitChangedEvt;
 
     [Header("Runtime values (Don't change)")]
     [SerializeField] private int sanity;
@@ -25,7 +26,14 @@ public class PlayerStatus : ScriptableObject
             SanityChangedEvt?.Invoke(this, sanity); 
         } 
     }
-    public Vector2Int SanityLimit { get => sanityLimit; set => sanityLimit = value; }
+    public Vector2Int SanityLimit {
+        get => sanityLimit;
+        set
+        {
+            sanityLimit = value;
+            SanityLimitChangedEvt?.Invoke(this, sanityLimit.y);
+        }
+    }
     
     public void SanityReset()
     {
