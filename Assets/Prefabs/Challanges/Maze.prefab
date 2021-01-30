@@ -323,6 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2610887525197119947}
+  - component: {fileID: 2019979132641568930}
   m_Layer: 0
   m_Name: Maze
   m_TagString: Untagged
@@ -347,6 +348,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2019979132641568930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610887525197119940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b6787a5b18e1a4caa594b68e177c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToEscapeSec: 180
+  playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
+  damageOverTime: 10
 --- !u!1001 &2610887523064863335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12186,6 +12202,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2610887525197119947}
     m_Modifications:
+    - target: {fileID: 7886060547585716508, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060547585716508, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7886060547585716510, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -12274,7 +12298,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7886060548306451724, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_margin.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451724, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: db0affe5d69c6d541bd55fc506ae3cbc, type: 2}
+    - target: {fileID: 7886060548306451724, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 7302985958251557067, guid: db0affe5d69c6d541bd55fc506ae3cbc, type: 2}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451725, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886060548306451726, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
+      propertyPath: timeTrial
+      value: 
+      objectReference: {fileID: 2019979132641568930}
+    m_RemovedComponents:
+    - {fileID: 7886060547585716505, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a957a35d260541b4e962d109a74b34f1, type: 3}
 --- !u!224 &2610887524451125792 stripped
 RectTransform:

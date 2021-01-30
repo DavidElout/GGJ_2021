@@ -291,10 +291,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2610887524451125799, guid: b3d7ba47a4b242641b84aa7e72430a9c, type: 3}
-      propertyPath: timeToEscapeSec
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2610887525197119940, guid: b3d7ba47a4b242641b84aa7e72430a9c, type: 3}
       propertyPath: m_Name
       value: Maze

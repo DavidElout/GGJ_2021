@@ -8,8 +8,8 @@ public class TimeTrailBehaviour : MonoBehaviour
     [SerializeField] private PlayerStatus playerStatus;
     private float timer = 0;
 
-    public float TimeLeft => timeToEscapeSec - timer;
-    public string TimeSec => (TimeLeft % 60 <= 9 ? "0" : "") + Mathf.FloorToInt(TimeLeft % 60).ToString();
+    public float TimeLeft => Mathf.Abs(timeToEscapeSec - timer);
+    public string TimeSec => (TimeLeft % 60 < 10 ? "0" : "") + Mathf.FloorToInt(TimeLeft % 60).ToString();
     public string TimerToText => string.Format("{0}:{1}", Mathf.FloorToInt(TimeLeft / 60), TimeSec);
     public bool Damaging => damageTimer > 0;
 
@@ -26,7 +26,6 @@ public class TimeTrailBehaviour : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > timeToEscapeSec)
         {
-            timeToEscapeSec += Time.deltaTime * 2;
             DoDamage();
         }
     }
