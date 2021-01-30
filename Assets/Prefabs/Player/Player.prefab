@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
-  maxSpeed: 6
+  maxSpeed: 7
   drag: 0.98
   rb: {fileID: 6716620867839371322}
 --- !u!54 &6716620867839371322
@@ -199,8 +199,8 @@ MonoBehaviour:
   lightIntensityRangeEffect: 10
   lightIntensityAffect: 0.2
   lightIntensityBaseValue: 1
-  flameScaleAffect: 0.1
-  flameScaleBaseValue: 0.5
+  flameScaleAffect: 0.05
+  flameScaleBaseValue: 0.3
   currentLightIntensity: 0
   neonWallMat: {fileID: 2100000, guid: 6f4cb4179cd2a574694e35bd82b2e2ed, type: 2}
 --- !u!114 &3849398901006884910
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -10, y: 10, z: 0}
+  m_FollowOffset: {x: -5, y: 10, z: 0}
   m_XDamping: 2
   m_YDamping: 0
   m_ZDamping: 2
@@ -354,15 +354,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301817774063432835}
-  m_LocalRotation: {x: 0.2705981, y: 0.65328145, z: -0.270598, w: 0.65328157}
-  m_LocalPosition: {x: -10, y: 10, z: 0}
+  m_LocalRotation: {x: 0.3535534, y: 0.61237246, z: -0.3535534, w: 0.61237246}
+  m_LocalPosition: {x: -5, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1301817773905475656}
   - {fileID: 1301817774674319205}
   m_Father: {fileID: 7760521038749857216}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 90, z: 0}
 --- !u!114 &1301817774063432833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,8 +442,8 @@ Camera:
   m_GameObject: {fileID: 1301817774674319206}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

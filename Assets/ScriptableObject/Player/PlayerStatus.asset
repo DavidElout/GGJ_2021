@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8352a0c0fa46fd249987b932f43566a9, type: 3}
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
-  sanity: 18
+  sanity: 1
   sanityLimit: {x: 0, y: 20}
   sanityStartingValue: 20
   sanityUpperLimitStartingValue: 20
