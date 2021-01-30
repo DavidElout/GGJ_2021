@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
+    public void ToggleMenu(bool enable)
+    {
+        gameObject.SetActive(enable);
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

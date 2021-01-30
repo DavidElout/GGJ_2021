@@ -193,6 +193,7 @@ MonoBehaviour:
   playerMovement: {fileID: 3923180188978839212}
   playerLight: {fileID: 2146907115}
   playerParticles: {fileID: 6932332686514330350}
+  deathMenu: {fileID: 0}
   meleeAttack: {fileID: 3849398901006884910}
   projectileAttack: {fileID: 7392304194920394215}
   lightIntensityRangeEffect: 10

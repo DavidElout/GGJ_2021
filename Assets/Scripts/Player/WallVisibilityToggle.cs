@@ -14,15 +14,18 @@ public class WallVisibilityToggle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (player.transform.position.z != transform.position.z)
+        if (player)
         {
-            if (player.transform.position.z < transform.position.z)
+            if (player.transform.position.z != transform.position.z)
             {
-                GetComponent<MeshRenderer>().enabled = true;
-            }
-            else if (player.transform.position.z > transform.position.z)
-            {
-                GetComponent<MeshRenderer>().enabled = false;
+                if (player.transform.position.z < transform.position.z)
+                {
+                    GetComponent<MeshRenderer>().enabled = true;
+                }
+                else if (player.transform.position.z > transform.position.z)
+                {
+                    GetComponent<MeshRenderer>().enabled = false;
+                }
             }
         }
     }
