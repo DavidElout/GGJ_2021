@@ -4857,7 +4857,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 289301614986012343, guid: 62263c37bf1edda4d94a92ed80b458bc, type: 3}
+  m_Mesh: {fileID: 289301614986012343, guid: a3ee271330cea0a4590edb58bf0ea0f3, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -9629,7 +9629,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf270f1f329e8324ba8f82c81a159c0b, type: 2}
+  - {fileID: 2100000, guid: c3e8d4d7aaf45b248befb4f2c93e8b91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10224,7 +10224,7 @@ ParticleSystem:
     startRotation:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -3.0560715
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -14532,7 +14532,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 289301614986012343, guid: 62263c37bf1edda4d94a92ed80b458bc, type: 3}
+  m_Mesh: {fileID: 289301614986012343, guid: a3ee271330cea0a4590edb58bf0ea0f3, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -14548,7 +14548,7 @@ GameObject:
   - component: {fileID: 8620105306511603112}
   - component: {fileID: 1338578665826221918}
   m_Layer: 0
-  m_Name: VFX_EnemyShield
+  m_Name: VFX_Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
