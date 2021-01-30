@@ -8,7 +8,6 @@ public class ParticleHandler : MonoBehaviour
     [SerializeField] private bool startOnPlay = false;
     [SerializeField] private ParticleSystem[] particles;
  
-
     private void Start()
     {
         if (startOnPlay)
@@ -16,7 +15,6 @@ public class ParticleHandler : MonoBehaviour
             ActivateParticles();
         }
     }
-
 
     public void ActivateParticles()
     {
@@ -26,6 +24,15 @@ public class ParticleHandler : MonoBehaviour
         }
     }
 
+    public bool IsParticleDone()
+    {
+        for (int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i].IsAlive())
+                return false;
+        }
+        return true;
+    }
 
 
     public void ScaleParticles(float size)

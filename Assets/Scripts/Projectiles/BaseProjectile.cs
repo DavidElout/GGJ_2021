@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class BaseProjectile : MonoBehaviour
 {
-    [SerializeField] private int speed;
+    [SerializeField] private float speed;
+    public int Damage { get; set; }
+    public float InitialSpeed { get; set; }
+    public bool HitSomething { get; set; }
 
     protected virtual void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        if(!HitSomething)
+            transform.position += transform.forward * (speed + InitialSpeed) * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Player") {
+            StartCoroutine(BurnedOut());
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StartCoroutine(BurnedOut());
+    }
+
+    protected IEnumerator BurnedOut()
+    {
+        HitSomething = true;
+        yield return new WaitForSeconds(1);
+
         Destroy(gameObject);
     }
 }
