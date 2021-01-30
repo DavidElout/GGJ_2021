@@ -38,12 +38,12 @@ public class PlayerStatus : ScriptableObject
     
     public void SanityReset()
     {
-        sanity = sanityStartingValue;
-        sanityLimit.y = sanityUpperLimitStartingValue;
+        SanityLimit = new Vector2Int(sanityLimit.x, sanityUpperLimitStartingValue);
+        Sanity = sanityStartingValue;
     }
-    
+
     public void IncreaseSanityLimit(int amount)
     {
-        sanityLimit.y += amount;
+        SanityLimit = new Vector2Int(sanityLimit.x, sanityLimit.y += amount);
     }
 }

@@ -32,7 +32,7 @@ public class PlayerFireBehaviour : MonoBehaviour
     private Sequence flickerSequence;
     private Sequence lowHealthSequence;
 
-    private void Awake()
+    private void Start()
     {
         playerStatus.SanityChangedEvt += PlayerStatus_SanityChangedEvt;
         playerStatus.SanityReset();

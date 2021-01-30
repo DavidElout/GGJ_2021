@@ -201,6 +201,7 @@ MonoBehaviour:
   flameScaleAffect: 0.1
   flameScaleBaseValue: 0.5
   currentLightIntensity: 0
+  neonWallMat: {fileID: 2100000, guid: 6f4cb4179cd2a574694e35bd82b2e2ed, type: 2}
 --- !u!114 &3849398901006884910
 MonoBehaviour:
   m_ObjectHideFlags: 0

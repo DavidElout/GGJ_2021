@@ -36,7 +36,7 @@ public class TimeTrailBehaviour : MonoBehaviour
         if (damageTimer > damageOverTime)
         {
             damageTimer = 0;
-            playerStatus.Sanity -= 1;
+            playerStatus.Sanity--;
         }
     }
 }
