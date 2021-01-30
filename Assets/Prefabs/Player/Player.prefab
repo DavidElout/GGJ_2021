@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146907113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1301817773028917817}
@@ -195,6 +195,12 @@ MonoBehaviour:
   playerParticles: {fileID: 6932332686514330350}
   meleeAttack: {fileID: 3849398901006884910}
   projectileAttack: {fileID: 7392304194920394215}
+  lightIntensityRangeEffect: 10
+  lightIntensityAffect: 0.2
+  lightIntensityBaseValue: 1
+  flameScaleAffect: 0.1
+  flameScaleBaseValue: 0.5
+  currentLightIntensity: 0
 --- !u!114 &3849398901006884910
 MonoBehaviour:
   m_ObjectHideFlags: 0
