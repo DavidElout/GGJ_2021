@@ -12,13 +12,21 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     [SerializeField] private bool burnEffectConstant;
     [SerializeField] private int timeToBurnPerSanity;
     [SerializeField] private int startSanityPool;
+    [SerializeField] private ParticleHandler particles;
+    private Collider collider;
+    private MeshRenderer renderer;
+
+    Coroutine stoppingRoutine;
 
     private void OnEnable()
     {
+        collider = GetComponent<Collider>();
+        renderer = GetComponent<MeshRenderer>();
         SanityPool = startSanityPool;
         if(burnEffectConstant)
         {
-            // Start fire
+            if (particles)
+                particles.ActivateParticles();
         }
     }
 
@@ -36,8 +44,9 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     {
         if (!OnFire)
         {
-            // Start particle effect
             print("Object started burning");
+            if(particles)
+                particles.ActivateParticles();
             OnFire = true;
         }
         BurnFromPool();
@@ -47,8 +56,9 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     {
         if (!burnEffectConstant && OnFire)
         {
-            // Stop particle effect
             print("Object stopped burning");
+            if (particles)
+                particles.StopParticles();
             OnFire = false;
         }
     }
@@ -56,9 +66,21 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     public void BurnOut()
     {
         print("Object burned out");
-        // Burn out the object
-        // Let the particle effect burn out
         BurnedOut = true;
+        collider.enabled = false;
+        renderer.enabled = false;
+        if (stoppingRoutine == null)
+            stoppingRoutine = StartCoroutine(WaitForBurnOut());
+    }
+
+    public IEnumerator WaitForBurnOut()
+    {
+        if (particles)
+        {
+            particles.StopParticles();
+            yield return new WaitUntil(particles.IsParticleDone);
+        }
         Destroy(gameObject);
+        stoppingRoutine = null;
     }
 }
