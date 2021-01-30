@@ -13,6 +13,15 @@ public class PlayerFireBehaviour : MonoBehaviour
     [SerializeField] private MeleeAttack meleeAttack;
     [SerializeField] private ProjectileAttack projectileAttack;
 
+    [Header("Sanity behaviour")]
+    [SerializeField] private int lightIntensityRangeEffect = 20;
+    [SerializeField] private float lightIntensityAffect = 0.2f;
+    [SerializeField] private float lightIntensityBaseValue = 0.5f;
+
+    [SerializeField] private float flameScaleAffect = 0.1f;
+    [SerializeField] private float flameScaleBaseValue = 0.5f;
+
+    [SerializeField] private float currentLightIntensity;
 
     private float timer = 0, timeUntilFireEffect = 2;
     private IFlamable currentFlamableObject;
@@ -34,7 +43,8 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void PlayerStatus_SanityChangedEvt(object sender, int e)
     {
-        playerParticles.ScaleParticles(e / 10f + 0.4f);
+        playerParticles.ScaleParticles(e * flameScaleAffect + flameScaleBaseValue);
+        currentLightIntensity = e * lightIntensityAffect + lightIntensityBaseValue;
     }
 
     void Update()
@@ -42,8 +52,8 @@ public class PlayerFireBehaviour : MonoBehaviour
         HandleInput();
         
         if(!flickerSequence.active)
-            flickerSequence.Append(playerLight.DOIntensity(Random.Range(0f, 2f), Random.Range(.2f, 1f)));
-        playerLight.range = playerLight.intensity * 50;
+            flickerSequence.Append(playerLight.DOIntensity(Random.Range(currentLightIntensity - 1f, currentLightIntensity + 1f), Random.Range(.2f, 1f)));
+        playerLight.range = playerLight.intensity * lightIntensityRangeEffect;
     }
 
 
