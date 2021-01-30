@@ -14,7 +14,7 @@ public class PlayerFireProjectile : BaseProjectile
         if (weakenOverTime) {
             timer += Time.deltaTime;
             if (timer >= timeToWeaken)
-                Destroy(gameObject);
+                StartCoroutine(BurnedOut());
         }
     }
 }

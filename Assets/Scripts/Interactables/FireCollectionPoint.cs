@@ -39,7 +39,7 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
 
     public void Extinguish()
     {
-        if (!burnEffectConstant)
+        if (!burnEffectConstant && OnFire)
         {
             // Stop particle effect
             print("Object stopped burning");

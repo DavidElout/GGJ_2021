@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerStatus
   m_EditorClassIdentifier: 
   sanity: 1
-  sanityLimit: {x: 1, y: 10}
-  sanityStartingValue: 10
-  sanityUpperLimitStartingValue: 10
+  sanityLimit: {x: 1, y: 20}
+  sanityStartingValue: 20
+  sanityUpperLimitStartingValue: 20
