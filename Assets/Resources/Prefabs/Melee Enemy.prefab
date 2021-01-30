@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5675793151100192155}
   - component: {fileID: 8239192124329979713}
   m_Layer: 2
-  m_Name: Simple Melee Enemy
+  m_Name: Melee Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &2536825324452106541
 SphereCollider:
@@ -155,11 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a547ec9ff0e854082e5537554705ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDetected: 0
-  playerInAttackRange: 0
-  rb: {fileID: 0}
-  player: {fileID: 0}
   attack: {fileID: 8239192124329979713}
+  enemyHealth: 3
 --- !u!114 &8239192124329979713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 1
   damage: 2
+  targetObject: {fileID: 0}
   playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
   attackParticle: {fileID: 277763395331827645}
 --- !u!1001 &1440363031068215694

@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class MeleeAttack : Attack
+public class RangedAttack : Attack
 {
     [SerializeField] private PlayerStatus playerStatus;
     [SerializeField] private ParticleHandler attackParticle;
@@ -8,7 +8,6 @@ public class MeleeAttack : Attack
     public override void DoAttack()
     {
         base.DoAttack();
-
         attackParticle.ActivateParticles();
 
         if (playerStatus != null) {

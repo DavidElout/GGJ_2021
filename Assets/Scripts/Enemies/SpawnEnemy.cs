@@ -45,16 +45,16 @@ public class SpawnEnemy : MonoBehaviour
         GameObject enemyObject = null;
         switch (enemyType) {
             case EnemyType.SimpleMelee:
-                enemyObject = Resources.Load<GameObject>("Prefabs/Simple Melee Enemy");
+                enemyObject = Resources.Load<GameObject>("Prefabs/Melee Enemy");
                 break;
             case EnemyType.Tank:
-                enemyObject = Resources.Load<GameObject>("Prefabs/Ranged Enemy");
+                enemyObject = Resources.Load<GameObject>("Prefabs/Tank Enemy");
                 break;
             case EnemyType.Ranged:
                 enemyObject = Resources.Load<GameObject>("Prefabs/Ranged Enemy");
                 break;
             case EnemyType.Mage:
-                enemyObject = Resources.Load<GameObject>("Prefabs/Simple Melee Enemy");
+                enemyObject = Resources.Load<GameObject>("Prefabs/Mage Enemy");
                 break;
         }
         return enemyObject;
