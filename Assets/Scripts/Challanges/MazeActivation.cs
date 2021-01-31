@@ -8,11 +8,14 @@ public class MazeActivation : MonoBehaviour
     public GameObject corridor;
     public GameObject timer;
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
             corridor.SetActive(false);
             maze.SetActive(true);
             timer.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 }
