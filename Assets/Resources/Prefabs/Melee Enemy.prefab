@@ -108,7 +108,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   targetObject: {fileID: 0}
   deathPrefab: {fileID: 6265976799604881981, guid: 52402c36ee8af5548867dedb85874d29, type: 3}
-  enemyHealth: 1
+  enemyHealth: 5
   attack: {fileID: 8322048483741739761}
 --- !u!114 &8322048483741739761
 MonoBehaviour:

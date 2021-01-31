@@ -142,6 +142,13 @@ public class PlayerFireBehaviour : MonoBehaviour
                 playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
             }
         }
+        if (other.CompareTag("FireSource"))
+        {
+            if (currentFlamableObject == null || currentFlamableObject.BurnedOut)
+                currentFlamableObject = other.GetComponent<IFlamable>();
+
+            burnTimer = currentFlamableObject.TimeToBurnPerSanity;
+        }
     }
 
     private void OnTriggerStay(Collider other)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FireCollectionPoint : MonoBehaviour, IFlamable
 {
@@ -69,7 +70,7 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
         print("Object burned out");
         BurnedOut = true;
         collider.enabled = false;
-        renderer.enabled = false;
+        transform.DOScale(Vector3.zero, .3f).Play();
         if (stoppingRoutine == null)
             stoppingRoutine = StartCoroutine(WaitForBurnOut());
     }
