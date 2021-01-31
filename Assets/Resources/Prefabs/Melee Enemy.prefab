@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2536825324452106541}
   - component: {fileID: 7803655587953802693}
   - component: {fileID: 5675793151100192155}
-  - component: {fileID: 8239192124329979713}
+  - component: {fileID: 8322048483741739761}
   m_Layer: 2
   m_Name: Melee Enemy
   m_TagString: Enemy
@@ -104,9 +104,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a547ec9ff0e854082e5537554705ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: {fileID: 8239192124329979713}
-  enemyHealth: 3
---- !u!114 &8239192124329979713
+  playerInChaseRange: 0
+  playerInAttackRange: 0
+  targetObject: {fileID: 0}
+  enemyHealth: 2
+  attack: {fileID: 8322048483741739761}
+--- !u!114 &8322048483741739761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,11 +118,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8574358767788026799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d5f1f0a83176e846b712cc4c6acdd9c, type: 3}
+  m_Script: {fileID: 11500000, guid: d24335febb2f77a439d84374f46e8d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 1
   damage: 2
+  timer: 0
   targetObject: {fileID: 0}
   playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
   particleOnHit: {fileID: 7374000712603243327}

@@ -5,9 +5,9 @@ public class Attack : MonoBehaviour
     [SerializeField] private float cooldownTime;
     [SerializeField] private int damage = 0;
 
-    private float timer = 0;
+    public float timer = 0;
 
-    public GameObject targetObject = null;
+    public GameObject targetObject;
     public float Range { get; set; }
     public int Damage => damage;
     public float Timer => timer;

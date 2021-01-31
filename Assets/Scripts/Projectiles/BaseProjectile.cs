@@ -24,7 +24,6 @@ public class BaseProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("AAAAAAAAAAAAAAAAA" + collision.gameObject.name);
         StartCoroutine(BurnedOut());
     }
 

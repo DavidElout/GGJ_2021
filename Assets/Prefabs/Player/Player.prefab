@@ -217,9 +217,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 2
   damage: 1
+  timer: 0
   targetObject: {fileID: 0}
-  playerStatus: {fileID: 0}
-  particleOnHit: {fileID: 0}
+  attackParticle: {fileID: 0}
 --- !u!114 &7392304194920394215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 1
   damage: 5
+  timer: 0
   targetObject: {fileID: 0}
   prefab: {fileID: 3510804517800841896, guid: f2903a40ccab2574b8ae6466200f2419, type: 3}
   owner: {fileID: 6716620867839371322}
