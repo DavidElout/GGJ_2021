@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dacb3445de8483428646e6a5c6db436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownTime: 1.5
+  cooldownTime: 1
   damage: 3
   timer: 0
   targetObject: {fileID: 0}
