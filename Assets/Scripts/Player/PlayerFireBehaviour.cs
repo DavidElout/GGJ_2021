@@ -13,6 +13,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     [SerializeField] private MeleeAttack meleeAttack;
     [SerializeField] private ProjectileAttack projectileAttack;
+    [SerializeField] private ShieldAttack shieldAttack;
 
     [Header("Sanity behaviour")]
     [SerializeField] private int lightIntensityRangeEffect = 20;
@@ -35,6 +36,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     public MeleeAttack MeleeAttack => meleeAttack;
     public ProjectileAttack ProjectileAttack => projectileAttack;
+    public ShieldAttack ShieldAttack => shieldAttack;
 
     private void Start()
     {
@@ -108,6 +110,19 @@ public class PlayerFireBehaviour : MonoBehaviour
         {
             meleeAttack.TryAttack();
         }
+        else if(Input.GetKeyDown(KeyCode.F))
+        {
+            Shield();
+        }
+    }
+
+    private void Shield()
+    {
+        if (playerStatus.Sanity > 1)
+        {
+            if(shieldAttack.TryAttack())
+                playerStatus.Sanity--;
+        }
     }
 
     private void ShootFire()
@@ -121,9 +136,12 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        if (!shieldAttack.active)
         {
-            playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+            if (other.CompareTag("Bullet"))
+            {
+                playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+            }
         }
     }
 
