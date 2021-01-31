@@ -5,7 +5,6 @@ using UnityEngine;
 public class TankEnemyBehaviour : EnemyBehaviour
 {
     [SerializeField] private MeleeAttack attack;
-    [SerializeField] public int enemyHealth { get; set; }
 
     public override void ChasingState(GameObject targetObject)
     {

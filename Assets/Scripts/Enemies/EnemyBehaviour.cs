@@ -7,20 +7,27 @@ public class EnemyBehaviour : MonoBehaviour
     private enum State { Idle, Chasing, Attacking, Dying };
     private State currentState = State.Idle;
 
-    private bool playerInChaseRange = false;
-    private bool playerInAttackRange = false;
-    private GameObject targetObject;
+    public bool playerInChaseRange = false;
+    public bool playerInAttackRange = false;
+    public GameObject targetObject;
+    public int enemyHealth = 2;
 
     internal Rigidbody enemyRigidbody;
 
-    public virtual void IdleState() {  }
-    public virtual void ChasingState(GameObject targetObject) {  }
-    public virtual void AttackingState(GameObject targetObject) {  }
+    public virtual void IdleState() { }
+    public virtual void ChasingState(GameObject targetObject) { }
+    public virtual void AttackingState(GameObject targetObject) { }
     public virtual void DyingState()
     {
         Object.Destroy(this.gameObject);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerBullet")) {
+            enemyHealth -= 2;
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -61,6 +68,10 @@ public class EnemyBehaviour : MonoBehaviour
             }
         } else {
             currentState = State.Idle;
+        }
+
+        if (enemyHealth < 1) {
+            currentState = State.Dying;
         }
 
         switch (currentState) {
