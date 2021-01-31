@@ -24,6 +24,22 @@ public class ParticleHandler : MonoBehaviour
         }
     }
 
+    public void StopParticles()
+    {
+        for (int i = 0; i < particles.Length; i++)
+        {
+            particles[i].Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        }
+    }
+
+    public void ForceStopParticles()
+    {
+        for (int i = 0; i < particles.Length; i++)
+        {
+            particles[i].Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+    }
+
     public bool IsParticleDone()
     {
         for (int i = 0; i < particles.Length; i++)

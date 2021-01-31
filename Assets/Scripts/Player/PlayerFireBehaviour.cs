@@ -13,6 +13,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     [SerializeField] private MeleeAttack meleeAttack;
     [SerializeField] private ProjectileAttack projectileAttack;
+    [SerializeField] private ShieldAttack shieldAttack;
 
     [Header("Sanity behaviour")]
     [SerializeField] private int lightIntensityRangeEffect = 20;
@@ -27,7 +28,7 @@ public class PlayerFireBehaviour : MonoBehaviour
     [Header("Sanity effects")]
     [SerializeField] Material neonWallMat;
 
-    private float timer = 0, timeUntilFireEffect = 2;
+    private float burnTimer = 0;
     private IFlamable currentFlamableObject;
 
     private Sequence flickerSequence;
@@ -35,6 +36,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     public MeleeAttack MeleeAttack => meleeAttack;
     public ProjectileAttack ProjectileAttack => projectileAttack;
+    public ShieldAttack ShieldAttack => shieldAttack;
 
     private void Start()
     {
@@ -100,13 +102,26 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void HandleInput()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse1))
         {
             ShootFire();
         }
-        else if(Input.GetKeyDown(KeyCode.Mouse1))
+        else if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             meleeAttack.TryAttack();
+        }
+        else if(Input.GetKeyDown(KeyCode.F))
+        {
+            Shield();
+        }
+    }
+
+    private void Shield()
+    {
+        if (playerStatus.Sanity > 1)
+        {
+            if(shieldAttack.TryAttack())
+                playerStatus.Sanity--;
         }
     }
 
@@ -121,9 +136,12 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        if (!shieldAttack.active)
         {
-            playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+            if (other.CompareTag("Bullet"))
+            {
+                playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
+            }
         }
     }
 
@@ -131,15 +149,17 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (other.CompareTag("FireSource"))
         {
-            timer += Time.deltaTime;
-
-            if(timer > timeUntilFireEffect)
-            {
+            if(currentFlamableObject == null || currentFlamableObject.BurnedOut)
                 currentFlamableObject = other.GetComponent<IFlamable>();
-                timer = 0;
+
+            if (burnTimer > currentFlamableObject.TimeToBurnPerSanity)
+            {
+                burnTimer = 0;
                 currentFlamableObject.Ignite();
                 playerStatus.Sanity++;
             }
+
+            burnTimer += Time.deltaTime;
         }
     }
 
@@ -147,9 +167,10 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (other.CompareTag("FireSource"))
         {
+            currentFlamableObject = null;
             IFlamable flamableObject = other.GetComponent<IFlamable>();
             flamableObject.Extinguish();
-            timer = 0;
+            burnTimer = 0;
         }
     }
 }

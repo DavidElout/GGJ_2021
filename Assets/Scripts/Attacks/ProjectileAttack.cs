@@ -4,7 +4,6 @@ public class ProjectileAttack : Attack
 {
     [SerializeField] private GameObject prefab;
     [SerializeField] private Rigidbody owner;
-    public Vector3 targetPosition = Vector3.zero;
 
     public override void DoAttack()
     {
@@ -12,8 +11,8 @@ public class ProjectileAttack : Attack
         if (owner == null)
             owner = GetComponent<Rigidbody>();
 
-        if (targetPosition != Vector3.zero) {
-            Vector3 spawnTowards = targetPosition - transform.position;
+        if (targetObject != null) {
+            Vector3 spawnTowards = targetObject.transform.position - transform.position;
             SpawnProjectile(spawnTowards, owner.velocity);
         } else {
             if (RayCasterTool.DoRaycastFromMouse(out RaycastHit hit)) {

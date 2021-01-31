@@ -30,7 +30,7 @@ public class BaseProjectile : MonoBehaviour
     protected IEnumerator BurnedOut()
     {
         HitSomething = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
 
         Destroy(gameObject);
     }

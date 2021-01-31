@@ -16,13 +16,13 @@ public class WallVisibilityToggle : MonoBehaviour
     {
         if (player)
         {
-            if (player.transform.position.z != transform.position.z)
+            if (player.transform.position.x != transform.position.x)
             {
-                if (player.transform.position.z < transform.position.z)
+                if (player.transform.position.x < transform.position.x)
                 {
                     GetComponent<MeshRenderer>().enabled = true;
                 }
-                else if (player.transform.position.z > transform.position.z)
+                else if (player.transform.position.x > transform.position.x)
                 {
                     GetComponent<MeshRenderer>().enabled = false;
                 }
