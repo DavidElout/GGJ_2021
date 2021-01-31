@@ -8,25 +8,30 @@ public class MeleeEnemyBehaviour : EnemyBehaviour
 
     public override void ChasingState(GameObject targetObject)
     {
-        base.ChasingState(targetObject);
-        Vector3 targetPosition = new Vector3(targetObject.transform.position.x, this.transform.position.y, targetObject.transform.position.z);
-        Vector3 positionDifference = targetPosition - this.transform.position;
-        Vector3 differenceDirection = positionDifference.normalized;
-        float differenceDistance = positionDifference.magnitude;
+        if (targetObject)
+        {
+            base.ChasingState(targetObject);
+            Vector3 targetPosition = new Vector3(targetObject.transform.position.x, this.transform.position.y, targetObject.transform.position.z);
+            Vector3 positionDifference = targetPosition - this.transform.position;
+            Vector3 differenceDirection = positionDifference.normalized;
+            float differenceDistance = positionDifference.magnitude;
 
-        int radiusForMaxForce = 15;
-        int maxForce = 75;
+            int radiusForMaxForce = 15;
+            int maxForce = 75;
 
-        if (differenceDistance > radiusForMaxForce) {
-            positionDifference = Vector3.ClampMagnitude(targetPosition - this.transform.position, radiusForMaxForce);
+            if (differenceDistance > radiusForMaxForce)
+            {
+                positionDifference = Vector3.ClampMagnitude(targetPosition - this.transform.position, radiusForMaxForce);
+            }
+
+            float forceRatio = differenceDistance / radiusForMaxForce;
+            float thrust = forceRatio * maxForce;
+            Vector3 forceVector = differenceDirection * thrust;
+
+            enemyRigidbody.AddForce(forceVector);
         }
-
-        float forceRatio = differenceDistance / radiusForMaxForce;
-        float thrust = forceRatio * maxForce;
-        Vector3 forceVector = differenceDirection * thrust;
-
-        enemyRigidbody.AddForce(forceVector);
     }
+
 
     public override void AttackingState(GameObject targetObject)
     {

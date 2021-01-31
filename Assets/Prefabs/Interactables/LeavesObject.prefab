@@ -97,9 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbef4ae164d0494fab117532698970b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanityLimitIncrease: 1
   burnEffectConstant: 0
   timeToBurnPerSanity: 2
-  startSanityPool: 5
+  startSanityPool: 3
   particles: {fileID: 7642646370902189020}
 --- !u!135 &2962421822674682482
 SphereCollider:

@@ -108,7 +108,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   targetObject: {fileID: 0}
   deathPrefab: {fileID: 6265976799604881981, guid: 52402c36ee8af5548867dedb85874d29, type: 3}
-  enemyHealth: 2
+  enemyHealth: 4
   attack: {fileID: 8118359159906719267}
 --- !u!114 &8118359159906719267
 MonoBehaviour:
@@ -128,7 +128,9 @@ MonoBehaviour:
   targetObject: {fileID: 0}
   playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
   attackPrefab: {fileID: 3645087049651442261, guid: 328c413929c01394cb6972f65164c02e, type: 3}
-  animationTimer: 0
+  attackAmount: 0
+  activeAttacks: []
+  attackLifetimeTimers: []
 --- !u!1001 &5444332271146442167
 PrefabInstance:
   m_ObjectHideFlags: 0
