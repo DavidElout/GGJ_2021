@@ -100,11 +100,11 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void HandleInput()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse1))
         {
             ShootFire();
         }
-        else if(Input.GetKeyDown(KeyCode.Mouse1))
+        else if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             meleeAttack.TryAttack();
         }

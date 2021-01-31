@@ -219,7 +219,7 @@ MonoBehaviour:
   damage: 1
   timer: 0
   targetObject: {fileID: 0}
-  attackParticle: {fileID: 0}
+  attackParticle: {fileID: 6335381082560732998}
 --- !u!114 &7392304194920394215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +709,11 @@ PrefabInstance:
 --- !u!4 &6335381082560732999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1164148469664919088, guid: 950c7966d445cff41a8a3c46d5d8225a, type: 3}
+  m_PrefabInstance: {fileID: 5173555541669196151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6335381082560732998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1164148469664919089, guid: 950c7966d445cff41a8a3c46d5d8225a, type: 3}
   m_PrefabInstance: {fileID: 5173555541669196151}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6426361657323991091

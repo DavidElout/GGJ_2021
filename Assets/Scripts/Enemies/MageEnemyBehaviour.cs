@@ -22,7 +22,7 @@ public class MageEnemyBehaviour : EnemyBehaviour
         float differenceDistance = positionDifference.magnitude;
 
         int radiusForMaxForce = 15;
-        int maxForce = 18;
+        int maxForce = 30;
 
         if (differenceDistance > radiusForMaxForce) {
             positionDifference = Vector3.ClampMagnitude(targetPosition - this.transform.position, radiusForMaxForce);
