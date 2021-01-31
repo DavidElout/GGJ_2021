@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5973006974988237993}
   - component: {fileID: 5973006974988237992}
   - component: {fileID: 5973006974988237991}
-  - component: {fileID: 5973006974988237995}
+  - component: {fileID: 3389085388879380473}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: Enemy Wave Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &5973006974988237995
+--- !u!114 &3389085388879380473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,12 +106,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5973006974988237994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b82d8c7d9b48054c8abab1161c52b3b, type: 3}
+  m_Script: {fileID: 11500000, guid: d578c25f494e28e49915b95ffcb838da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEnemyType: 0
   spawnAmount: 10
   spawnTimes: 2
   spawnDelayInMilliseconds: 500
-  spawnRadius: 2
-  spawnEnemies: 1
+  spawnRadius: 1
+  spawnEnemies: 0
