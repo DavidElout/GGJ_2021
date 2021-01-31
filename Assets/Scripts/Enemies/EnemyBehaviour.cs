@@ -10,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool playerInChaseRange = false;
     public bool playerInAttackRange = false;
     public GameObject targetObject;
+    public GameObject deathPrefab;
     public int enemyHealth = 2;
 
     internal Rigidbody enemyRigidbody;
@@ -50,6 +51,11 @@ public class EnemyBehaviour : MonoBehaviour
                 playerInChaseRange = false;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(deathPrefab, transform.position, Quaternion.identity);
     }
 
     void Start()

@@ -35,6 +35,12 @@ public class RangedAttack : Attack
         }
     }
 
+    private void OnDestroy()
+    {
+        if (attackObject)
+            Destroy(attackObject);
+    }
+
     public void Update()
     {
         timer += Time.deltaTime;
