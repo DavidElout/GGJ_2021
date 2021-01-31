@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public enum EnemyType { SimpleMelee, Tank, Ranged, Mage };
+    public enum EnemyType { Melee, Ranged, Mage };
     public EnemyType selectedEnemyType;
     public int spawnAmount = 1;
-    public int spawnTimes = 1;
     public float spawnDelayInMilliseconds = 500.0f;
     public float spawnRadius = 1.0f;
 
@@ -44,11 +43,8 @@ public class SpawnEnemy : MonoBehaviour
     {
         GameObject enemyObject = null;
         switch (enemyType) {
-            case EnemyType.SimpleMelee:
+            case EnemyType.Melee:
                 enemyObject = Resources.Load<GameObject>("Prefabs/Melee Enemy");
-                break;
-            case EnemyType.Tank:
-                enemyObject = Resources.Load<GameObject>("Prefabs/Tank Enemy");
                 break;
             case EnemyType.Ranged:
                 enemyObject = Resources.Load<GameObject>("Prefabs/Ranged Enemy");
@@ -62,12 +58,10 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        for (int i = 0; i < spawnTimes; i++) {
-            for (int j = 0; j < spawnAmount; j++) {
-                GameObject enemyObject = CreateEnemyObject(selectedEnemyType);
-                Instantiate(enemyObject, GetValidRandomLocation(), Quaternion.identity);
-                yield return new WaitForSeconds(spawnDelayInMilliseconds / 1000);
-            }
+        for (int j = 0; j < spawnAmount; j++) {
+            GameObject enemyObject = CreateEnemyObject(selectedEnemyType);
+            Instantiate(enemyObject, GetValidRandomLocation(), Quaternion.identity);
+            yield return new WaitForSeconds(spawnDelayInMilliseconds / 1000);
         }
     }
 
