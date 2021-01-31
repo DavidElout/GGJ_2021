@@ -1,3 +1,4 @@
+using Hellmade.Sound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class MazeDeactivation : MonoBehaviour
 {
     public GameObject timer;
+    public AudioClip music;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,6 +14,8 @@ public class MazeDeactivation : MonoBehaviour
         {
             timer.SetActive(false);
             gameObject.SetActive(false);
+            EazySoundManager.PrepareMusic(music, .6f, true, false);
+            EazySoundManager.PlayMusic(music, .6f, true, false);
         }
     }
 }

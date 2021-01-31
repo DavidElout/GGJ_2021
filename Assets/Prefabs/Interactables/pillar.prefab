@@ -127,6 +127,7 @@ MonoBehaviour:
   trigger: {fileID: 1911263785}
   flame: {fileID: 5770494279868436986}
   flameLight: {fileID: 7537150322370847963}
+  lit: {fileID: 8300000, guid: e77a406c82452634e8a982b192d44dfe, type: 3}
 --- !u!1 &6084912666400618890
 GameObject:
   m_ObjectHideFlags: 0

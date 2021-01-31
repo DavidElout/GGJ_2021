@@ -2,12 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Hellmade.Sound;
 
 [CreateAssetMenu(fileName = "PlayerStatus", menuName = "ScriptableObjects/PlayerStatus")]
 public class PlayerStatus : ScriptableObject
 {
     public event EventHandler<int> SanityChangedEvt;
     public event EventHandler<int> SanityLimitChangedEvt;
+
+    public AudioClip loseHealth;
+    public AudioClip increaseHealth;
+
 
     [Header("Runtime values (Don't change)")]
     [SerializeField] private int sanity;
@@ -21,8 +26,12 @@ public class PlayerStatus : ScriptableObject
     { 
         get => sanity; 
         set 
-        { 
-            sanity = Mathf.Clamp(value, sanityLimit.x, sanityLimit.y); 
+        {
+            if (value > sanity)
+                EazySoundManager.PlaySound(increaseHealth);
+            else
+                EazySoundManager.PlaySound(loseHealth);
+            sanity = Mathf.Clamp(value, sanityLimit.x, sanityLimit.y);
             SanityChangedEvt?.Invoke(this, sanity); 
         } 
     }

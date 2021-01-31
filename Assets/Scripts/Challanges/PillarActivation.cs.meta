@@ -3,7 +3,12 @@ guid: 269e826b600f3c4429708cc742d4d133
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - door: {instanceID: 0}
+  - trigger: {instanceID: 0}
+  - flame: {instanceID: 0}
+  - flameLight: {instanceID: 0}
+  - lit: {fileID: 8300000, guid: e77a406c82452634e8a982b192d44dfe, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

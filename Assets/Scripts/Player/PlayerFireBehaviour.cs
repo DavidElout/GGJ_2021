@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Hellmade.Sound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,11 @@ public class PlayerFireBehaviour : MonoBehaviour
     [Header("Sanity effects")]
     [SerializeField] Material neonWallMat;
 
+    public AudioClip music;
+    public AudioClip shoot;
+    public AudioClip shield;
+    public AudioClip melee;
+
     private float burnTimer = 0;
     private IFlamable currentFlamableObject;
 
@@ -43,6 +49,8 @@ public class PlayerFireBehaviour : MonoBehaviour
         playerStatus.SanityReset();
 
         flickerSequence = DOTween.Sequence();
+        EazySoundManager.PrepareMusic(music, .6f, true, false);
+        EazySoundManager.PlayMusic(music, .6f, true, false);
     }
 
     private void OnDestroy()
@@ -107,11 +115,13 @@ public class PlayerFireBehaviour : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            meleeAttack.TryAttack();
+            if(meleeAttack.TryAttack())
+                EazySoundManager.PlaySound(melee, .6f);
         }
         else if(Input.GetKeyDown(KeyCode.F))
         {
             Shield();
+            
         }
     }
 
@@ -119,8 +129,11 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (playerStatus.Sanity > 1)
         {
-            if(shieldAttack.TryAttack())
+            if (shieldAttack.TryAttack())
+            {
                 playerStatus.Sanity--;
+                EazySoundManager.PlaySound(shield, .6f);
+            }
         }
     }
 
@@ -128,8 +141,11 @@ public class PlayerFireBehaviour : MonoBehaviour
     {
         if (playerStatus.Sanity > 1)
         {
-            if(projectileAttack.TryAttack())
+            if (projectileAttack.TryAttack())
+            {
                 playerStatus.Sanity--;
+                EazySoundManager.PlaySound(shoot, .6f);
+            }
         }
     }
 
