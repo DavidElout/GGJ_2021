@@ -16,6 +16,7 @@ public class SkillBar : MonoBehaviour
         sliders = GetComponentsInChildren<Slider>();
         attacks.Add(playerFireBehaviour.ProjectileAttack);
         attacks.Add(playerFireBehaviour.MeleeAttack);
+        attacks.Add(playerFireBehaviour.ShieldAttack);
         for (int i = 0; i < attacks.Count; i++)
         {
             sliders[i].maxValue = attacks[i].CooldownTime;
