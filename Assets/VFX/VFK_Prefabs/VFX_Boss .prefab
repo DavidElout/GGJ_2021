@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1602327982462808600}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4543144991773547964}
   m_RootOrder: 1
@@ -4902,7 +4902,7 @@ Transform:
   m_GameObject: {fileID: 2253223194184716347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2108068880825262570}
   - {fileID: 6461401368228724212}
@@ -10726,7 +10726,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 0.01
+      probability: 0.05
   SizeModule:
     enabled: 1
     curve:
@@ -14570,6 +14570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4543144991773547964}
+  - component: {fileID: 1213529396}
   m_Layer: 0
   m_Name: 'VFX_Boss '
   m_TagString: Untagged
@@ -14596,6 +14597,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213529396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4543144991773547965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfcf65391dd890547ad4f93bd48aaaa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOnPlay: 1
+  particles:
+  - {fileID: 4513697064611126455}
+  - {fileID: 3239553563313555500}
+  - {fileID: 4543144992386773660}
+  - {fileID: 2364393727620588298}
+  - {fileID: 7538716750129575912}
 --- !u!1 &4543144992386773659
 GameObject:
   m_ObjectHideFlags: 0
@@ -14623,7 +14643,7 @@ Transform:
   m_GameObject: {fileID: 4543144992386773659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4543144991773547964}
   m_RootOrder: 2
@@ -19494,7 +19514,7 @@ Transform:
   m_GameObject: {fileID: 4607689954088440438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4543144991773547964}
   m_RootOrder: 3
@@ -20133,7 +20153,7 @@ ParticleSystem:
     radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 20, y: 0, z: 0}
+    m_Rotation: {x: 20, y: 90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -25298,7 +25318,7 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
-      probability: 0.01
+      probability: 0.05
   SizeModule:
     enabled: 1
     curve:
@@ -29160,7 +29180,7 @@ Transform:
   m_GameObject: {fileID: 7515984867814467599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4543144991773547964}
   m_RootOrder: 4
@@ -29799,7 +29819,7 @@ ParticleSystem:
     radiusThickness: 0
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 20, y: 0, z: 0}
+    m_Rotation: {x: 20, y: 90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
