@@ -26,13 +26,16 @@ public class RangedAttack : Attack
 
     private GameObject SpawnAttack(bool inFrontOfPlayer)
     {
-        Vector3 direction = targetObject.transform.position;
-        Vector2 newPosition2D = new Vector2(direction.x, direction.z) + Random.insideUnitCircle * 5;
-        Vector3 newPosition = new Vector3(newPosition2D.x, targetObject.transform.position.y, newPosition2D.y);
+        if (targetObject)
+        {
+            Vector3 direction = targetObject.transform.position;
+            Vector2 newPosition2D = new Vector2(direction.x, direction.z) + Random.insideUnitCircle * 5;
+            Vector3 newPosition = new Vector3(newPosition2D.x, targetObject.transform.position.y, newPosition2D.y);
 
-        // Spawn the attack
-        attackObject = Instantiate(attackPrefab, newPosition, Quaternion.identity);
-        attackObject.GetComponent<ParticleHandler>().ActivateParticles();
+            // Spawn the attack
+            attackObject = Instantiate(attackPrefab, newPosition, Quaternion.identity);
+            attackObject.GetComponent<ParticleHandler>().ActivateParticles();
+        }
         return attackObject;
     }
 

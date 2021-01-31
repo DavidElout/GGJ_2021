@@ -195,7 +195,6 @@ MonoBehaviour:
   playerMovement: {fileID: 3923180188978839212}
   playerLight: {fileID: 2146907115}
   playerParticles: {fileID: 5924913959991730052}
-  deathMenu: {fileID: 0}
   meleeAttack: {fileID: 3849398901006884910}
   projectileAttack: {fileID: 7392304194920394215}
   shieldAttack: {fileID: 6475366203464047091}
@@ -206,6 +205,10 @@ MonoBehaviour:
   flameScaleBaseValue: 0.3
   currentLightIntensity: 0
   neonWallMat: {fileID: 2100000, guid: 6f4cb4179cd2a574694e35bd82b2e2ed, type: 2}
+  music: {fileID: 8300000, guid: ef1bfe4a40d377448b60c3e11f3891e2, type: 3}
+  shoot: {fileID: 8300000, guid: c847fda7df7d4c04cb7213c1cbc24691, type: 3}
+  shield: {fileID: 8300000, guid: 791cba7d4e929af43bcd77f528641829, type: 3}
+  melee: {fileID: 8300000, guid: 7fc17fc95078cc049a95bf397b35b0ad, type: 3}
 --- !u!114 &3849398901006884910
 MonoBehaviour:
   m_ObjectHideFlags: 0
