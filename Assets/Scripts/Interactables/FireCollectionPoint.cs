@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FireCollectionPoint : MonoBehaviour, IFlamable
 {
@@ -8,7 +9,9 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     public int SanityPool { get; set; }
     public bool BurnedOut { get; set; }
     public int TimeToBurnPerSanity { get => timeToBurnPerSanity; set => timeToBurnPerSanity = value; }
-
+    public bool SanityLimitIncrease { get => sanityLimitIncrease; set => sanityLimitIncrease = value; }
+    
+    [SerializeField] private bool sanityLimitIncrease;
     [SerializeField] private bool burnEffectConstant;
     [SerializeField] private int timeToBurnPerSanity;
     [SerializeField] private int startSanityPool;
@@ -69,7 +72,7 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
         print("Object burned out");
         BurnedOut = true;
         collider.enabled = false;
-        renderer.enabled = false;
+        transform.DOScale(Vector3.zero, .3f).Play();
         if (stoppingRoutine == null)
             stoppingRoutine = StartCoroutine(WaitForBurnOut());
     }

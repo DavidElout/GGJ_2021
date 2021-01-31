@@ -9,7 +9,6 @@ public class PlayerFireBehaviour : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Light playerLight;
     [SerializeField] private ParticleHandler playerParticles;
-    [SerializeField] private DeathMenu deathMenu;
 
     [SerializeField] private MeleeAttack meleeAttack;
     [SerializeField] private ProjectileAttack projectileAttack;
@@ -95,7 +94,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void Die()
     {
-        deathMenu.ToggleMenu(true);
+        DeathMenu.Instance.ToggleMenu(true);
         // Do death animation
         Destroy(gameObject);
     }
@@ -143,6 +142,13 @@ public class PlayerFireBehaviour : MonoBehaviour
                 playerStatus.Sanity -= other.GetComponent<BaseProjectile>().Damage;
             }
         }
+        if (other.CompareTag("FireSource"))
+        {
+            if (currentFlamableObject == null || currentFlamableObject.BurnedOut)
+                currentFlamableObject = other.GetComponent<IFlamable>();
+
+            burnTimer = currentFlamableObject.TimeToBurnPerSanity;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -156,7 +162,13 @@ public class PlayerFireBehaviour : MonoBehaviour
             {
                 burnTimer = 0;
                 currentFlamableObject.Ignite();
-                playerStatus.Sanity++;
+                if (currentFlamableObject.SanityLimitIncrease)
+                {
+                    playerStatus.IncreaseSanityLimit(1);
+                    playerStatus.Sanity++;
+                }
+                else
+                    playerStatus.Sanity++;
             }
 
             burnTimer += Time.deltaTime;
