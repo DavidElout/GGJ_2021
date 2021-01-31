@@ -39,8 +39,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869721942664236969}
-  - component: {fileID: 324056028}
-  - component: {fileID: 1032347042515257542}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -60,42 +58,109 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1869721941931435579}
+  - {fileID: 2059340066578162674}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &324056028
-MonoBehaviour:
+--- !u!1001 &2564871102008344142
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1869721942664236969}
+    m_Modifications:
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144991773547965, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_Name
+      value: 'VFX_Boss '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144992386773658, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543144992386773658, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6522776365877805824, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6522776365877805824, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662517449012945903, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662517449012945903, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327623613146971104, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 7327623613146971104, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590277999080345940, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7590277999080345940, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.98
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+--- !u!4 &2059340066578162674 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4543144991773547964, guid: 504b5ee5075363c45970b42ec5983f89, type: 3}
+  m_PrefabInstance: {fileID: 2564871102008344142}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869721942664236974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e206d5b2906a1c419d5dd9745156d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTime: 0
-  damage: 3
-  rangeOfAttack: 2
-  waitForAttack: 3.5
-  attackPrefab: {fileID: 4867676533671908380, guid: c4b9ef1816b6dbb4ea2b3fd5fd319c13, type: 3}
-  player: {fileID: 0}
---- !u!114 &1032347042515257542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869721942664236974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1aca2c7477be0e741a2e08273caf5de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasSpawned: 1
-  health: 0
-  timeBetweenAttacks: 4
-  restTime: 10
-  attacks:
-  - {fileID: 324056028}
