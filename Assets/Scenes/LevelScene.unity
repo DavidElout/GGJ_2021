@@ -15203,7 +15203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67c0d4a3eb71ee47943072bd712597f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boink: {fileID: 0}
+  boink: {fileID: 5440668649353112234}
 --- !u!65 &1450277857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23165,7 +23165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5440668649353112235
 MonoBehaviour:
   m_ObjectHideFlags: 0
