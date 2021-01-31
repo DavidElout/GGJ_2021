@@ -5,7 +5,6 @@ using UnityEngine;
 public class MageEnemyBehaviour : EnemyBehaviour
 {
     [SerializeField] private RangedAttack attack;
-    [SerializeField] public int enemyHealth { get; set; }
 
     public override void ChasingState(GameObject targetObject)
     {

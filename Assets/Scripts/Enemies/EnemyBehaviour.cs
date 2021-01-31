@@ -10,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool playerInChaseRange = false;
     public bool playerInAttackRange = false;
     public GameObject targetObject;
+    public int enemyHealth = 2;
 
     internal Rigidbody enemyRigidbody;
 
@@ -21,6 +22,12 @@ public class EnemyBehaviour : MonoBehaviour
         Object.Destroy(this.gameObject);
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerBullet")) {
+            enemyHealth -= 2;
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -61,6 +68,10 @@ public class EnemyBehaviour : MonoBehaviour
             }
         } else {
             currentState = State.Idle;
+        }
+
+        if (enemyHealth < 1) {
+            currentState = State.Dying;
         }
 
         switch (currentState) {

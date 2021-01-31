@@ -5,7 +5,6 @@ using UnityEngine;
 public class RangedEnemyBehaviour : EnemyBehaviour
 {
     [SerializeField] private ProjectileAttack attack;
-    [SerializeField] public int enemyHealth = 2;
 
     public override void ChasingState(GameObject targetObject)
     {

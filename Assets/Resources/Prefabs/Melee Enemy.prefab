@@ -107,8 +107,8 @@ MonoBehaviour:
   playerInChaseRange: 0
   playerInAttackRange: 0
   targetObject: {fileID: 0}
+  enemyHealth: 2
   attack: {fileID: 8322048483741739761}
-  enemyHealth: 3
 --- !u!114 &8322048483741739761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 1
   damage: 2
+  timer: 0
   targetObject: {fileID: 0}
   playerStatus: {fileID: 11400000, guid: d0b2fc225378f1744855efe067a16cc5, type: 2}
   particleOnHit: {fileID: 7374000712603243327}
