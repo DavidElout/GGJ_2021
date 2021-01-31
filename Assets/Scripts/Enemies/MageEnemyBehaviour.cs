@@ -33,5 +33,8 @@ public class MageEnemyBehaviour : EnemyBehaviour
         Vector3 forceVector = differenceDirection * thrust;
 
         enemyRigidbody.AddForce(-forceVector);
+
+        attack.targetObject = targetObject;
+        attack.TryAttack();
     }
 }
