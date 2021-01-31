@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WaveBehaviour : MonoBehaviour
 {
-    [SerializeField] private SpawnEnemy enemySpawner;
+    [SerializeField] private SpawnWaveEnemy enemyWaveSpawner;
     [SerializeField] private GameObject door;
     [SerializeField] private List<GameObject> blockades;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +17,15 @@ public class WaveBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (enemyWaveSpawner.WavesCompleted)
+            CompletedWaves();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            enemySpawner.spawnEnemies = true;
+            enemyWaveSpawner.spawnEnemies = true;
             foreach (GameObject blockade in blockades)
             {
                 blockade.SetActive(true);
@@ -32,10 +34,10 @@ public class WaveBehaviour : MonoBehaviour
         }
     }
 
-    private void WavesCompleted()
+    private void CompletedWaves()
     {
         door.SetActive(false);
-        enemySpawner.spawnEnemies = false;
+        enemyWaveSpawner.spawnEnemies = false;
         foreach (GameObject blockade in blockades)
         {
             blockade.SetActive(false);
