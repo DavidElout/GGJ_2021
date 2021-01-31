@@ -17,7 +17,8 @@ public class RangedAttack : Attack
     {
         base.DoAttack();
 
-        while (attackLifetimeTimers.Count != 3) {
+        while (attackLifetimeTimers.Count != 3)
+        {
             attackLifetimeTimers.Add(0);
         }
 
@@ -38,7 +39,8 @@ public class RangedAttack : Attack
 
     private IEnumerator CheckForPlayer()
     {
-        if (Vector3.Distance(attackObject.transform.position, targetObject.transform.position) < 1) {
+        if (Vector3.Distance(attackObject.transform.position, targetObject.transform.position) < 1)
+        {
             dealingDamage = true;
             playerStatus.Sanity -= 1;
             yield return new WaitForSeconds(0.5f);
@@ -48,76 +50,55 @@ public class RangedAttack : Attack
 
     private void OnDestroy()
     {
-        if (attackObject) {
-        Destroy(attackObject);
+        if (attackObject)
+        {
+            Destroy(attackObject);
+        }
     }
-}
 
     public void Update()
     {
         timer += Time.deltaTime;
 
-        if (activated) {
-            if (timer > 0) {
-                if (activeAttacks.Count == 0 && timer < 0.5) {
-                    activeAttacks.Add(SpawnAttack(true));
-                    attackLifetimeTimers[0] = 0;
-                }
-
-                attackLifetimeTimers[0] += Time.deltaTime;
-
-                // Animation starts attacking
-                if (attackLifetimeTimers[0] > 2 && !dealingDamage) {
-                    StartCoroutine(CheckForPlayer());
-                }
-
-                // Animation is over
-                if (attackLifetimeTimers[0] > 5) {
-                    Destroy(activeAttacks[0]);
-                    activeAttacks.RemoveAt(0);
-                    activated = false;
-                }
+        if (activated)
+        {
+            if (timer > 0)
+            {
+                AttackAnimation(0, 0.5f);
             }
-            
-            if (timer > 0.5f) {
-                if (activeAttacks.Count == 1 && timer < 1f) {
-                    activeAttacks.Add(SpawnAttack(false));
-                    attackLifetimeTimers[1] = 0;
-                }
-                attackLifetimeTimers[1] += Time.deltaTime;
-
-                // Animation starts attacking
-                if (attackLifetimeTimers[1] > 2 && !dealingDamage) {
-                    StartCoroutine(CheckForPlayer());
-                }
-
-                // Animation is over
-                if (attackLifetimeTimers[1] > 5) {
-                    Destroy(activeAttacks[1]);
-                    activeAttacks.RemoveAt(1);
-                    activated = false;
-                }
+            if (timer > 0.5f)
+            {
+                AttackAnimation(1, 1f);
             }
-            
-            if (timer > 1f) {
-                if (activeAttacks.Count == 2 && timer < 1.5f) {
-                    activeAttacks.Add(SpawnAttack(false));
-                    attackLifetimeTimers[2] = 0;
-                }
-                attackLifetimeTimers[2] += Time.deltaTime;
-
-                // Animation starts attacking
-                if (attackLifetimeTimers[2] > 2 && !dealingDamage) {
-                    StartCoroutine(CheckForPlayer());
-                }
-
-                // Animation is over
-                if (attackLifetimeTimers[2] > 5) {
-                    Destroy(activeAttacks[2]);
-                    activeAttacks.RemoveAt(2);
-                    activated = false;
-                }
+            if (timer > 1f)
+            {
+                AttackAnimation(2, 1.5f);
             }
+        }
+    }
+
+    private void AttackAnimation(int index, float timePassed)
+    {
+        if (activeAttacks.Count == index && timer < timePassed)
+        {
+            activeAttacks.Add(SpawnAttack(true));
+            attackLifetimeTimers[index] = 0;
+        }
+
+        attackLifetimeTimers[index] += Time.deltaTime;
+
+        // Animation starts attacking
+        if (attackLifetimeTimers[index] > 2 && !dealingDamage)
+        {
+            StartCoroutine(CheckForPlayer());
+        }
+
+        // Animation is over
+        if (attackLifetimeTimers[index] > 5)
+        {
+            Destroy(activeAttacks[index]);
+            activeAttacks.RemoveAt(index);
+            activated = false;
         }
     }
 }
