@@ -9,7 +9,9 @@ public class FireCollectionPoint : MonoBehaviour, IFlamable
     public int SanityPool { get; set; }
     public bool BurnedOut { get; set; }
     public int TimeToBurnPerSanity { get => timeToBurnPerSanity; set => timeToBurnPerSanity = value; }
-
+    public bool SanityLimitIncrease { get => sanityLimitIncrease; set => sanityLimitIncrease = value; }
+    
+    [SerializeField] private bool sanityLimitIncrease;
     [SerializeField] private bool burnEffectConstant;
     [SerializeField] private int timeToBurnPerSanity;
     [SerializeField] private int startSanityPool;

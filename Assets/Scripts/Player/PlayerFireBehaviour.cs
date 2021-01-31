@@ -162,7 +162,13 @@ public class PlayerFireBehaviour : MonoBehaviour
             {
                 burnTimer = 0;
                 currentFlamableObject.Ignite();
-                playerStatus.Sanity++;
+                if (currentFlamableObject.SanityLimitIncrease)
+                {
+                    playerStatus.IncreaseSanityLimit(1);
+                    playerStatus.Sanity++;
+                }
+                else
+                    playerStatus.Sanity++;
             }
 
             burnTimer += Time.deltaTime;
