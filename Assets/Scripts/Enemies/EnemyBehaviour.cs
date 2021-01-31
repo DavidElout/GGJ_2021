@@ -53,11 +53,6 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        Instantiate(deathPrefab, transform.position, Quaternion.identity);
-    }
-
     void Start()
     {
         enemyRigidbody = GetComponent<Rigidbody>();
@@ -78,6 +73,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (enemyHealth < 1) {
             currentState = State.Dying;
+            Instantiate(deathPrefab, transform.position, Quaternion.identity);
         }
 
         switch (currentState) {

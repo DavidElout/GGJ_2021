@@ -9,7 +9,6 @@ public class PlayerFireBehaviour : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Light playerLight;
     [SerializeField] private ParticleHandler playerParticles;
-    [SerializeField] private DeathMenu deathMenu;
 
     [SerializeField] private MeleeAttack meleeAttack;
     [SerializeField] private ProjectileAttack projectileAttack;
@@ -95,7 +94,7 @@ public class PlayerFireBehaviour : MonoBehaviour
 
     private void Die()
     {
-        deathMenu.ToggleMenu(true);
+        DeathMenu.Instance.ToggleMenu(true);
         // Do death animation
         Destroy(gameObject);
     }

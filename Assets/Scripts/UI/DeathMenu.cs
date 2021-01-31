@@ -5,17 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
+    public static DeathMenu Instance;
+
     public void ToggleMenu(bool enable)
     {
         gameObject.SetActive(enable);
     }
 
-    public void RestartGame()
+    public void Awake()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(transform.parent.gameObject);
+        DontDestroyOnLoad(transform.parent.gameObject);
+        ToggleMenu(false);
     }
 
-    public void QuitGame()
+    public void RestartGame()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        ToggleMenu(false);
+    }
+
+    public static void QuitGame()
     {
         Application.Quit();
     }
