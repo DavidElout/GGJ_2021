@@ -38,11 +38,15 @@ public class RangedAttack : Attack
 
     private IEnumerator CheckForPlayer()
     {
-        if (Vector3.Distance(attackObject.transform.position, targetObject.transform.position) < 1) {
-            dealingDamage = true;
-            playerStatus.Sanity -= 1;
-            yield return new WaitForSeconds(0.5f);
-            dealingDamage = false;
+        if (targetObject)
+        {
+            if (Vector3.Distance(attackObject.transform.position, targetObject.transform.position) < 1)
+            {
+                dealingDamage = true;
+                playerStatus.Sanity -= 1;
+                yield return new WaitForSeconds(0.5f);
+                dealingDamage = false;
+            }
         }
     }
 
