@@ -18,8 +18,9 @@ public class SpawnWaveEnemy : MonoBehaviour
 
 
     GameObject enemyObject;
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
     private int currentWaveIndex = 0;
-    private int spawnedEnemies = 0;
+    private int spawnedEnemiesAmount = 0;
     private bool wavesCompleted = false;
 
     Vector3 GetValidRandomLocation(int count = 0)
@@ -72,7 +73,8 @@ public class SpawnWaveEnemy : MonoBehaviour
         for (int i = 0; i < spawnTimes; i++) {
             for (int j = 0; j < spawnAmount; j++) {
                 GameObject enemyObject = CreateEnemyObject(selectedEnemyType);
-                spawnedEnemies++;
+                spawnedEnemies.Add(enemyObject);
+                spawnedEnemiesAmount++;
                 Instantiate(enemyObject, GetValidRandomLocation(), Quaternion.identity);
                 yield return new WaitForSeconds(spawnDelayInMilliseconds / 1000);
             }
@@ -82,7 +84,13 @@ public class SpawnWaveEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnEnemies && spawnedEnemies == 0) {
+        foreach (GameObject enemy in spawnedEnemies)
+        {
+            if (enemy == null)
+                spawnedEnemiesAmount--;
+        }
+        if (spawnEnemies && spawnedEnemiesAmount == 0 && !wavesCompleted) {
+            spawnedEnemies.Clear();
             spawnAmount = waveAmount[currentWaveIndex];
             StartCoroutine(SpawnEnemies());
             spawnEnemies = false;
