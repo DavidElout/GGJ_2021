@@ -763,6 +763,10 @@ PrefabInstance:
       propertyPath: startOnPlay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1616654971398287540, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2577687768231963400, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
       propertyPath: looping
       value: 1
@@ -835,6 +839,10 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7090393890126352924, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7726650039130540870, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
       propertyPath: looping
       value: 1
@@ -862,6 +870,10 @@ PrefabInstance:
     - target: {fileID: 7726650039130540870, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759588088445371913, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8620105306511603112, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
       propertyPath: m_RootOrder
@@ -910,6 +922,10 @@ PrefabInstance:
     - target: {fileID: 8620105306511603113, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
       propertyPath: m_Name
       value: VFX_Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620105306511603113, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7e0463658b7d149bc97042c624cda3, type: 3}
