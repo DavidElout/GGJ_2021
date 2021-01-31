@@ -7,15 +7,15 @@ public class EnemyBehaviour : MonoBehaviour
     private enum State { Idle, Chasing, Attacking, Dying };
     private State currentState = State.Idle;
 
-    private bool playerInChaseRange = false;
-    private bool playerInAttackRange = false;
-    private GameObject targetObject;
+    public bool playerInChaseRange = false;
+    public bool playerInAttackRange = false;
+    public GameObject targetObject;
 
     internal Rigidbody enemyRigidbody;
 
-    public virtual void IdleState() {  }
-    public virtual void ChasingState(GameObject targetObject) {  }
-    public virtual void AttackingState(GameObject targetObject) {  }
+    public virtual void IdleState() { }
+    public virtual void ChasingState(GameObject targetObject) { }
+    public virtual void AttackingState(GameObject targetObject) { }
     public virtual void DyingState()
     {
         Object.Destroy(this.gameObject);

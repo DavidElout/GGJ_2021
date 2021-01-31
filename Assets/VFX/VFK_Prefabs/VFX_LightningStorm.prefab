@@ -14538,6 +14538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4307433079874746888}
   - component: {fileID: 3453329654317740202}
+  - component: {fileID: 7711359249724239656}
   m_Layer: 0
   m_Name: VFX_LightningStorm
   m_TagString: Untagged
@@ -14583,6 +14584,19 @@ MonoBehaviour:
   - {fileID: 7907446088621781659}
   - {fileID: 897217210}
   - {fileID: 1636484428}
+--- !u!135 &7711359249724239656
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645087049651442261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5570469367215451169
 GameObject:
   m_ObjectHideFlags: 0
