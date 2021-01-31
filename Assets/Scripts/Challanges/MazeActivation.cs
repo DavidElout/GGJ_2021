@@ -15,7 +15,7 @@ public class MazeActivation : MonoBehaviour
             corridor.SetActive(false);
             maze.SetActive(true);
             timer.SetActive(true);
-            gameObject.SetActive(false);
+            // gameObject.SetActive(false);
         }
     }
 }
