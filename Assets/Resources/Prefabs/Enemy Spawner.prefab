@@ -110,8 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEnemyType: 0
-  spawnAmount: 1
-  spawnTimes: 1
+  spawnAmount: 10
+  spawnTimes: 2
   spawnDelayInMilliseconds: 500
-  spawnRadius: 1
+  spawnRadius: 2
   spawnEnemies: 1
